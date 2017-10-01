@@ -39,7 +39,7 @@ namespace LoginServer
             for (int i = 0; i < m_count; i++)
             {
                 readerU.Read();
-                string user = readerU.GetInt32(0).ToString();
+                string user = readerU.GetString(0);
                 m_userIDList.Add(user);
             }
 
@@ -69,7 +69,7 @@ namespace LoginServer
 
             Console.WriteLine("Password: ");
             m_password = Console.ReadLine();
-            m_checkPassword.CommandText = "SELECT UserID, Password, IsSupervisor FROM [USER] WHERE UserID = " + Convert.ToInt32(m_userid);
+            m_checkPassword.CommandText = "SELECT UserID, Password, IsSupervisor FROM [USER] WHERE UserID = \"" + m_userid + "\"";
             m_checkPassword.Connection = con;
             OleDbDataReader readerP = m_checkPassword.ExecuteReader();
             readerP.Read();
