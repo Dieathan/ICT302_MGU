@@ -1,7 +1,7 @@
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\bin\Release\LoginServer.exe.config
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\bin\Release\KinesisArcade.mdb
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\bin\Release\LoginServer.exe
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\bin\Release\LoginServer.pdb
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\obj\Release\LoginServer.exe
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\obj\Release\LoginServer.pdb
-c:\users\geoff\documents\visual studio 2015\Projects\LoginServer\LoginServer\obj\Release\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\bin\Release\LoginServer.exe.config
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\bin\Release\LoginServer.exe
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\bin\Release\LoginServer.pdb
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\bin\Release\System.Data.SQLite.dll
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\obj\Release\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\obj\Release\LoginServer.exe
+C:\Users\Geoff\Documents\Visual Studio 2015\Projects\LoginServer\LoginServer\obj\Release\LoginServer.pdb

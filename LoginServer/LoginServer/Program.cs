@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.OleDb;
+using System.Data.SQLite;
 using System.Diagnostics;
 
 namespace LoginServer
@@ -18,23 +18,23 @@ namespace LoginServer
             int m_count = 0;
             List<String> m_userIDList = new List<String>();
 
-            OleDbConnection con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\KinesisArcade.mdb");
+            SQLiteConnection con = new SQLiteConnection("data source=C:\\Users\\Geoff\\Documents\\Visual Studio 2015\\Projects\\LoginServer\\LoginServer\\KinesisArcade.sqlite");
             con.Open();
 
-            OleDbCommand m_createLoginInstance = con.CreateCommand();
-            OleDbCommand m_checkPassword = con.CreateCommand();
-            OleDbCommand m_checkUser = con.CreateCommand();
-            OleDbCommand m_getCount = con.CreateCommand();
+            SQLiteCommand m_createLoginInstance = con.CreateCommand();
+            SQLiteCommand m_checkPassword = con.CreateCommand();
+            SQLiteCommand m_checkUser = con.CreateCommand();
+            SQLiteCommand m_getCount = con.CreateCommand();
 
-            m_getCount.CommandText = "Select Count(*) from [USER]";
+            m_getCount.CommandText = "SELECT COUNT(*) FROM USER;";
             m_getCount.Connection = con;
-            OleDbDataReader readerC = m_getCount.ExecuteReader();
+            SQLiteDataReader readerC = m_getCount.ExecuteReader();
             readerC.Read();
             m_count = readerC.GetInt32(0);
 
             m_checkUser.CommandText = "SELECT UserID FROM [USER]";
             m_checkUser.Connection = con;
-            OleDbDataReader readerU = m_checkUser.ExecuteReader();
+            SQLiteDataReader readerU = m_checkUser.ExecuteReader();
 
             for (int i = 0; i < m_count; i++)
             {
@@ -50,7 +50,7 @@ namespace LoginServer
 
             while (!m_userCheck)
             {
-                for(int i = 0; i < m_count; i++)
+                for (int i = 0; i < m_count; i++)
                 {
                     if (String.Compare(m_userIDList[i], m_userid) == 0)
                     {
@@ -58,7 +58,7 @@ namespace LoginServer
                     }
                 }
 
-                if(!m_userCheck)
+                if (!m_userCheck)
                 {
                     Console.WriteLine("UserID does not exist in the database\n");
                     Console.WriteLine("User ID: ");
@@ -71,7 +71,7 @@ namespace LoginServer
             m_password = Console.ReadLine();
             m_checkPassword.CommandText = "SELECT UserID, Password, IsSupervisor FROM [USER] WHERE UserID = \"" + m_userid + "\"";
             m_checkPassword.Connection = con;
-            OleDbDataReader readerP = m_checkPassword.ExecuteReader();
+            SQLiteDataReader readerP = m_checkPassword.ExecuteReader();
             readerP.Read();
             string password = readerP.GetString(1);
 
@@ -89,12 +89,12 @@ namespace LoginServer
                 }
 
                 string time = DateTime.Now.ToString("d/MM/yyyy HH:mm");
-                m_createLoginInstance.CommandText = "Insert into LOGININSTANCE(UserID,PasswordCorrect,LoginTime)Values('" + m_userid + "','" + Convert.ToInt32(m_passCheck) + "','" + time + "')";
+                m_createLoginInstance.CommandText = "Insert into LOGININSTANCE(UserIDEntered,PasswordCorrect,LoginTime)Values('" + m_userid + "','" + Convert.ToInt32(m_passCheck) + "','" + time + "')";
                 m_createLoginInstance.Connection = con;
                 m_createLoginInstance.ExecuteNonQuery();
             };
 
-            if(readerP.GetBoolean(2))
+            if (readerP.GetBoolean(2))
             {
                 ProcessStartInfo wInfo = new ProcessStartInfo("..\\..\\index.html");
                 Process.Start(wInfo);
