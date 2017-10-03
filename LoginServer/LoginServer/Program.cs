@@ -18,7 +18,7 @@ namespace LoginServer
             int m_count = 0;
             List<String> m_userIDList = new List<String>();
 
-            SQLiteConnection con = new SQLiteConnection("data source=C:\\Users\\Geoff\\Documents\\Visual Studio 2015\\Projects\\LoginServer\\LoginServer\\KinesisArcade.sqlite");
+            SQLiteConnection con = new SQLiteConnection("data source=..\\..\\..\\..\\KinesisArcade.sqlite");
             con.Open();
 
             SQLiteCommand m_createLoginInstance = con.CreateCommand();
