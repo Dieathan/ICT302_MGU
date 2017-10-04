@@ -3,16 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SQLite;
+using UnityEngine;
 
 /**
  * 
  */
-public class DatabaseInterface {
+public class DatabaseInterface : MonoBehaviour {
 
-    /**
-     * 
-     */
-    public DatabaseInterface() {
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public DatabaseInterface()
+    {
+
     }
 
 
