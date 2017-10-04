@@ -18,37 +18,37 @@ public class Security {
     /**
      * 
      */
-    private void string restrictionID;
+    private string restrictionID;
 
     /**
      * 
      */
-    private void string userID;
+    private string userID;
 
     /**
      * 
      */
-    private void string gameID;
+    private string gameID;
 
     /**
      * 
      */
-    private void bool isFound;
+    private bool isFound;
 
     /**
      * 
      */
-    private void bool isCompleted;
+    private bool isCompleted;
 
     /**
      * 
      */
-    private void bool isRestricted;
+    private bool isRestricted;
 
     /**
      * 
      */
-    private void bool isFreePlay;
+    private bool isFreePlay;
 
 
 }

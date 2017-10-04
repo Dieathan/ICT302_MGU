@@ -4,25 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
-using UnityEngine;
 
 /**
  * 
  */
-public class DatabaseInterface : MonoBehaviour {
+public class DatabaseInterface
+{
 
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    List<Game> m_gameList;
+    List<GameInstance> m_incompleteGames;
+    List<string> m_restrictions;
+    bool m_canFreePlay;
 
     public DatabaseInterface()
     {
@@ -34,63 +27,80 @@ public class DatabaseInterface : MonoBehaviour {
     /**
      * @param String url
      */
-    private void void addRecordingURL(void String url) {
+    private void addRecordingURL(string url) {
         // TODO implement here
     }
 
     /**
      * 
      */
-    private void List[Game] getGameList() {
+    private List<Game> getGameList()
+    {
+        return m_gameList;
+    }
+
+    /**
+     * 
+     */
+    private void buildGameList()
+    {
         // TODO implement here
     }
 
     /**
      * 
      */
-    private void void buildGameList() {
+    private void completeProgram()
+    {
         // TODO implement here
     }
 
     /**
      * 
      */
-    private void void completeProgram() {
-        // TODO implement here
+    private List<GameInstance> getIncompleteGameList()
+    {
+        return m_incompleteGames;
     }
 
     /**
      * 
      */
-    private void List{GameInstance] getIncompleteGameList() {
-        // TODO implement here
+    private bool checkCanFreePlay()
+    {
+        return m_canFreePlay;
     }
 
     /**
      * 
      */
-    private void bool checkCanFreePlay() {
+    private List<string> getRestrictions()
+    {
         // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    private void List[Game] getRestrictions() {
-        // TODO implement here
+        return m_restrictions;
     }
 
     /**
      * @param List[GameInstances] games
      */
-    private void void processGamesList(void List[GameInstances] games) {
+    private void processGamesList(List<GameInstance> games)
+    {
         // TODO implement here
     }
 
-	struct Game {
+	public struct Game
+    {
 		public string m_title;
 		public int m_id;
 		public string m_description;
+    }
+
+    public struct GameInstance
+    {
+        int gameTitle;
+        string m_difficulty;
+        string m_duration;
+        bool m_isComplete;
     }
 	
 }
