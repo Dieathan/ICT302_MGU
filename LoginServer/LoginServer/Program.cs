@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace LoginServer
             SQLiteCommand m_checkUser = con.CreateCommand();
             SQLiteCommand m_getCount = con.CreateCommand();
 
-            m_getCount.CommandText = "SELECT COUNT(*) FROM USER;";
+            m_getCount.CommandText = "SELECT COUNT(*) FROM USER";
             m_getCount.Connection = con;
             SQLiteDataReader readerC = m_getCount.ExecuteReader();
             readerC.Read();
@@ -101,6 +102,10 @@ namespace LoginServer
             }
             else
             {
+                FileStream fs = new FileStream("..\\..\\..\\..\\currentuser.txt", FileMode.Truncate);
+                Byte[] info = new UTF8Encoding(true).GetBytes(m_userid);
+                fs.Write(info, 0, info.Length);
+
                 ProcessStartInfo gInfo = new ProcessStartInfo("..\\..\\iamtext.txt");
                 Process.Start(gInfo);
             }
