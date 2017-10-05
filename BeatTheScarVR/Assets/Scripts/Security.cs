@@ -50,5 +50,18 @@ public class Security {
      */
     private bool isFreePlay;
 
-
+	private bool canFreePlay(){
+		if (isFreePlay == true)
+			return true;
+		else
+			return false;
+	}
+	
+	private bool isRestricted(string gameTitle){
+		if (gameTitle.isRestricted == true)
+			return true;
+		else
+			return false;
+	}
+	
 }
