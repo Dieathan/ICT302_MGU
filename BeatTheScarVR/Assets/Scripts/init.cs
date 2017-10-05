@@ -3,11 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 /**
  * 
  */
-public class init {
+public class init : MonoBehaviour
+{
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     /**
      * 
@@ -18,21 +31,12 @@ public class init {
     /**
      * 
      */
-    private void WorldBuilder m_world;
+    private WorldBuilder m_world;
 
     /**
      * 
      */
-    private void Security m_security;
+    private Security m_security;
 
-
-
-
-    /**
-     * 
-     */
-    private void void ArcadeLoop() {
-        // TODO implement here
-    }
 
 }
