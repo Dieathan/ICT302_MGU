@@ -8,39 +8,38 @@ using UnityEngine;
 /**
  * 
  */
-public class GameDataHelper
+public static class GameDataHelper
 {
 
     /**
      * 
      */
-    public GameDataHelper()
+    static GameDataHelper()
     {
-
+        m_kinectRecord = false;
     }
-
     /**
      * 
      */
-    private List<DatabaseInterface.GameInstance> m_programGameList;
+    private static bool m_kinectRecord;
 
-    /**
-     * 
-     */
-    private string gameID;
-
-    /**
-     * 
-     */
-    private bool m_kinectRecord;
+    private static string m_url;
 
     /**
      * @param int score 
      * @param int time
      */
-    public static bool AddMetricsToDatabase(int score, int time)
+    public static bool AddMetricsToDatabase(DatabaseInterface.GameInstance game, int score, int time)
     {
+        DatabaseInterface dbInterface = new DatabaseInterface();
         bool success = false;
+
+        if(m_kinectRecord)
+        {
+            setRecord(false);
+        }
+
+        dbInterface.addPatientData(game, score, time, m_url);
 
         return success;
     }
@@ -48,9 +47,24 @@ public class GameDataHelper
     /**
      * @param bool isRecording
      */
-    public static void KinectRecord(bool isRecording)
+    public static void setRecord(bool record)
     {
-        // TODO implement here
+        m_kinectRecord = record;
+
+        if(m_kinectRecord)
+        {
+            //turn on kinect recording
+        }
+        else
+        {
+            //turn off kinect recording
+            m_url = "";
+        }
+    }
+
+    public static bool getRecord()
+    {
+        return m_kinectRecord;
     }
 
 }

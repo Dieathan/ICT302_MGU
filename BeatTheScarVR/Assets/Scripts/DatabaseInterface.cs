@@ -31,6 +31,12 @@ public class DatabaseInterface
         setUser();
         buildGameList();
         setProgramList();
+        setRestrictions();
+    }
+
+    public DatabaseInterface(int x)
+    {
+
     }
 
     private void setUser()
@@ -42,10 +48,10 @@ public class DatabaseInterface
     /**
      * @param String url
      */
-    private void addPatientData(GameInstance game, string userid, int score, int timePlayed, string videourl)
+    public void addPatientData(GameInstance game, int score, int timePlayed, string videourl)
     {
         SqliteCommand cmd1 = new SqliteCommand();
-        cmd1.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + userid + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
+        cmd1.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + m_userID + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
         cmd1.ExecuteNonQuery();
 
         SqliteCommand cmd2 = new SqliteCommand();
@@ -85,7 +91,7 @@ public class DatabaseInterface
     /**
      * 
      */
-    private List<Game> getGameList()
+    public List<Game> getGameList()
     {
         return m_gameList;
     }
@@ -93,7 +99,7 @@ public class DatabaseInterface
     /**
      * 
      */
-    private bool programComplete()
+    public bool programComplete()
     {
         bool check = true;
 
@@ -154,15 +160,48 @@ public class DatabaseInterface
     /**
      * 
      */
-    private List<GameInstance> getProgramGameList()
+    public List<GameInstance> getProgramGameList()
     {
         return m_programGames;
+    }
+
+    private void setRestrictions()
+    {
+        String game;
+
+        SqliteCommand cmd = new SqliteCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "SELECT COUNT(*) FROM RESTRICTION";
+        SqliteDataReader read = cmd.ExecuteReader();
+        read.Read();
+        int count = read.GetInt32(0);
+
+        cmd.CommandText = "SELECT * FROM RESTRICTION";
+        read = cmd.ExecuteReader();
+
+        for (int i = 0; i < count; i++)
+        {
+            read.Read();
+            if(read.GetBoolean(3))
+            {
+                for(int j = 0; j < m_gameList.Count; j++)
+                {
+                    if(read.GetInt32(1) == m_gameList.ElementAt(j).m_id)
+                    {
+                        game = m_gameList.ElementAt(j).m_title;
+                        m_restrictions.Add(game);
+                    }
+                }
+                
+            }
+            
+        }
     }
 
     /**
      * 
      */
-    private List<string> getRestrictions()
+    public List<string> getRestrictions()
     {
         return m_restrictions;
     }
