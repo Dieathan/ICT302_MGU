@@ -19,7 +19,8 @@
 
         <tr>
             <td>
-                <button class="button2">Access Current Patient</button>
+                <button class="button2" onclick="document.getElementById('id02').style.display='block'">
+                    Access Current Patient</button>
             </td>
         </tr>
     </table>
@@ -52,6 +53,29 @@
                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                     </div>
                 </form>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table align="center">
+        <tr>
+            <td>
+                <div id="id02" class="modal">
+
+                    <form class="modal-content animate" action="/action_page.php">
+
+                        <div class="container">
+                            <label><b>Patient ID</b></label>
+                            <input type="text" placeholder="Enter Patient ID" name="uname" required>
+                        </div>
+
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="createbtn">View</button>
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                        </div>
+                    </form>
 
                 </div>
             </td>
