@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,9 +43,6 @@
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>Assets\Plugins\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="Boo.Lang" />
@@ -244,15 +239,13 @@
     <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarSkinnedMeshRenderComponent.cs" />
     <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarSkinnedMeshRenderPBSComponent.cs" />
     <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarTouchController.cs" />
+    <Compile Include="Assets\Scripts\ArcadeLogic.cs" />
     <Compile Include="Assets\Scripts\DatabaseInterface.cs" />
     <Compile Include="Assets\Scripts\GameDataHelper.cs" />
-    <Compile Include="Assets\Scripts\GameInstance.cs" />
-    <Compile Include="Assets\Scripts\init.cs" />
     <Compile Include="Assets\Scripts\InteractionHandler.cs" />
     <Compile Include="Assets\Scripts\KinectVideoRecording.cs" />
-    <Compile Include="Assets\Scripts\Physics.cs" />
+    <Compile Include="Assets\Scripts\ProgramHelper.cs" />
     <Compile Include="Assets\Scripts\Security.cs" />
-    <Compile Include="Assets\Scripts\WorldBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LICENSE.txt" />
