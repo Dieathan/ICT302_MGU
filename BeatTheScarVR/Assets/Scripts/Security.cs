@@ -58,10 +58,10 @@ public class Security {
 	}
 	
 	private bool isRestricted(string gameTitle){
-		if (gameTitle.isRestricted == true)
+		/*if (gameTitle.isRestricted == true)
 			return true;
 		else
-			return false;
+			return false;*/
 	}
 	
 }
