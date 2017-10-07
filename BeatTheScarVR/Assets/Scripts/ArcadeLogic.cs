@@ -10,18 +10,18 @@ using UnityEngine;
  */
 public class ArcadeLogic : MonoBehaviour
 {
-    private DatabaseInterface m_databaseInterface;
+    private DatabaseInterface m_dbInterface;
     private Security m_security;
     private ProgramHelper m_programHelper;
-    private List<DatabaseInterface.Game> m_gameList;
+    private List<GameDataHelper.Game> m_gameList;
 
     // Use this for initialization
     void Start()
     {
-        m_databaseInterface = new DatabaseInterface();
-        m_security = new Security();
-        m_programHelper = new ProgramHelper(m_databaseInterface.getProgramGameList());
-        m_gameList = m_databaseInterface.getGameList();
+        m_dbInterface = new DatabaseInterface();
+        m_security = new Security(m_dbInterface);
+        m_programHelper = new ProgramHelper(m_dbInterface.getProgramGameList());
+        m_gameList = m_dbInterface.getGameList();
     }
 
     // Update is called once per frame

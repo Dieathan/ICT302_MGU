@@ -7,17 +7,17 @@ using UnityEngine;
 
 public class ProgramHelper
 {
-    public ProgramHelper(List<DatabaseInterface.GameInstance> prog)
+    public ProgramHelper(List<GameDataHelper.GameInstance> prog)
     {
         m_program = prog;
         setCurrentGame();
     }
 
-    List<DatabaseInterface.GameInstance> m_program;
+    List<GameDataHelper.GameInstance> m_program;
 
     DatabaseInterface m_dbInterface;
 
-    DatabaseInterface.GameInstance m_currentGame;
+    GameDataHelper.GameInstance m_currentGame;
 
     private void setCurrentGame()
     {
@@ -33,7 +33,7 @@ public class ProgramHelper
         } while (m_program.ElementAt(j).m_completed);
     }
 
-    public DatabaseInterface.GameInstance getNextGame()
+    public GameDataHelper.GameInstance getNextGame()
     {
         return m_currentGame;
     }

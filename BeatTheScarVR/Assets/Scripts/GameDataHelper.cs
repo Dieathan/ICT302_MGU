@@ -25,11 +25,13 @@ public static class GameDataHelper
 
     private static string m_url;
 
+    private static GameInstance m_currentGame;
+
     /**
      * @param int score 
      * @param int time
      */
-    public static bool AddMetricsToDatabase(DatabaseInterface.GameInstance game, int score, int time)
+    public static bool AddMetricsToDatabase(GameInstance game, int score, int time)
     {
         DatabaseInterface dbInterface = new DatabaseInterface();
         bool success = false;
@@ -65,6 +67,23 @@ public static class GameDataHelper
     public static bool getRecord()
     {
         return m_kinectRecord;
+    }
+
+    public struct Game
+    {
+        public int m_id;
+        public string m_coordinates;
+        public string m_title;
+        public string m_description;
+    }
+
+    public struct GameInstance
+    {
+        public int m_gameInstanceID;
+        public int m_gameID;
+        public string m_difficulty;
+        public int m_duration;
+        public bool m_completed;
     }
 
 }

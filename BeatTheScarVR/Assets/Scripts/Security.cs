@@ -12,56 +12,42 @@ public class Security {
     /**
      * 
      */
-    public Security() {
+    public Security(DatabaseInterface di)
+    {
+        m_dbInterface = di;
+        m_restrictions = m_dbInterface.getRestrictions();
+
     }
 
-    /**
-     * 
-     */
-    private string restrictionID;
+    private DatabaseInterface m_dbInterface;
 
-    /**
-     * 
-     */
-    private string userID;
+    private List<string> m_restrictions;
 
-    /**
-     * 
-     */
-    private string gameID;
+	private bool canFreePlay()
+    {
+        bool check = false;
 
-    /**
-     * 
-     */
-    private bool isFound;
+		if(m_dbInterface.programComplete() && m_dbInterface.canFreePlay())
+        {
+            check = true;
+        }
 
-    /**
-     * 
-     */
-    private bool isCompleted;
-
-    /**
-     * 
-     */
-    private bool isRestricted;
-
-    /**
-     * 
-     */
-    private bool isFreePlay;
-
-	private bool canFreePlay(){
-		if (isFreePlay == true)
-			return true;
-		else
-			return false;
+        return check;
 	}
 	
-	private bool isRestricted(string gameTitle){
-		/*if (gameTitle.isRestricted == true)
-			return true;
-		else
-			return false;*/
+	private bool isRestricted(string gameTitle)
+    {
+        bool check = false;
+
+        for(int i = 0; i < m_restrictions.Count; i++)
+        {
+            if(gameTitle.CompareTo(m_restrictions.ElementAt(i)) == 1)
+            {
+                check = true;
+            }
+        }
+
+        return check;
 	}
 	
 }
