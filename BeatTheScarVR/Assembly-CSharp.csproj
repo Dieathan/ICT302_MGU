@@ -272,11 +272,11 @@
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
- <Reference Include="System.Data">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/ICT302_MGU/BeatTheScarVR/Assets/Plugins/System.Data.dll</HintPath>
- </Reference>
  <Reference Include="Mono.Data.SqliteClient">
  <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/ICT302_MGU/BeatTheScarVR/Assets/Plugins/Mono.Data.SqliteClient.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/ICT302_MGU/BeatTheScarVR/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
