@@ -246,7 +246,6 @@
      <None Include="Assets\OSPNative\LICENSE.txt" />
      <None Include="Assets\OVR\Resources\OVRMRCameraFrame.shader" />
      <None Include="Assets\OVR\Resources\OVRMRClipPlane.shader" />
-     <None Include="Assets\Objects\Television\Font Textura.txt" />
      <None Include="Assets\OculusPlatform\LICENSE.txt" />
      <None Include="Assets\OVR\Resources\Underlay Impostor.shader" />
      <None Include="Assets\OvrAvatar\THIRD_PARTY_NOTICES.txt" />

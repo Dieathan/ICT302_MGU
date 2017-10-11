@@ -596,9 +596,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 33a0f552-c2e2-4b08-8c02-64060623bc2b
+  cloudProjectId: 4e88a1b4-8671-4739-b04d-93e8c2613096
   projectName: TouchTempTest
-  organizationId: skywingx
+  organizationId: csmith92
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
