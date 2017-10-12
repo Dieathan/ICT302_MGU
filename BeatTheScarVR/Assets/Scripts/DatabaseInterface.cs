@@ -43,6 +43,7 @@ public class DatabaseInterface
     { 
         StreamReader sr = File.OpenText("..\\currentuser.txt");
         m_userID = sr.ReadLine();
+        GameDataHelper.setPatient(m_userID);
     }
 
     /**
@@ -220,6 +221,52 @@ public class DatabaseInterface
         return check;
     }
 
-	
+	public GameDataHelper.GameInstance addGameInstance(string gameTitle, string difficulty, int time)
+    {
+        int gid = -1;
+        int ginstid;
+        int count = 0;
+        SqliteCommand cmd = new SqliteCommand();
+
+        for (int i = 0; i < m_gameList.Count; i++)
+        {
+            if(gameTitle.CompareTo(m_gameList.ElementAt(i).m_title) == 0)
+            {
+                gid = m_gameList.ElementAt(i).m_id;
+            }
+        }
+
+        if (gid >= 0)
+        {
+            cmd.Connection = con;
+            cmd.CommandText = "INSERT INTO GAMEINSTANCE(GameID, Difficulty, Duration) VALUES(" + gid + ", '" + difficulty + "', " + time + ")";
+            cmd.ExecuteNonQuery();
+        }
+
+        cmd.CommandText = "SELECT COUNT(*) FROM GAMESINSTANCE";
+        SqliteDataReader read = cmd.ExecuteReader();
+        read.Read();
+        int total = read.GetInt32(0);
+
+        cmd.CommandText = "SELECT GameInstance FROM GAMEINSTANCE";
+        read = cmd.ExecuteReader();
+        
+        while(count < total - 1)
+        {
+            read.Read();
+            count++;
+        }
+
+        read.Read();
+        ginstid = read.GetInt32(0);
+
+        GameDataHelper.GameInstance gi = new GameDataHelper.GameInstance();
+        gi.m_gameInstanceID = ginstid;
+        gi.m_gameID = gid;
+        gi.m_difficulty = difficulty;
+        gi.m_duration = time;
+
+        return gi;       
+    }
 	
 }

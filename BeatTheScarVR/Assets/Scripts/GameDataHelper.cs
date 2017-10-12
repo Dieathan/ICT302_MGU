@@ -17,6 +17,7 @@ public static class GameDataHelper
     static GameDataHelper()
     {
         m_kinectRecord = false;
+        m_kvr = new KinectVideoRecording();
     }
     /**
      * 
@@ -25,7 +26,11 @@ public static class GameDataHelper
 
     private static string m_url;
 
+    private static string m_pid;
+
     private static GameInstance m_currentGame;
+
+    private static KinectVideoRecording m_kvr;
 
     /**
      * @param int score 
@@ -33,12 +38,12 @@ public static class GameDataHelper
      */
     public static bool AddMetricsToDatabase(GameInstance game, int score, int time)
     {
-        DatabaseInterface dbInterface = new DatabaseInterface();
+        DatabaseInterface dbInterface = new DatabaseInterface(0);
         bool success = false;
 
         if(m_kinectRecord)
         {
-            setRecord(false);
+            stopRecord();
         }
 
         dbInterface.addPatientData(game, score, time, m_url);
@@ -46,27 +51,39 @@ public static class GameDataHelper
         return success;
     }
 
+    public static void createGameInstance(string gameTitle, string difficulty, int time)
+    {
+        DatabaseInterface db = new DatabaseInterface();
+        m_currentGame = db.addGameInstance(gameTitle, difficulty, time);
+    }
+
     /**
      * @param bool isRecording
      */
-    public static void setRecord(bool record)
+    public static void record()
     {
-        m_kinectRecord = record;
+        if(m_kinectRecord == false)
+        {
+            m_kvr.record();
+        }
 
-        if(m_kinectRecord)
-        {
-            //turn on kinect recording
-        }
-        else
-        {
-            //turn off kinect recording
-            m_url = "";
-        }
+        m_kinectRecord = true;
+    }
+
+    private static void stopRecord()
+    {
+        m_url = m_kvr.close(m_pid, m_currentGame.m_gameID);
+        m_kinectRecord = false;
     }
 
     public static bool getRecord()
     {
         return m_kinectRecord;
+    }
+
+    public static void setPatient(string pid)
+    {
+        m_pid = pid;
     }
 
     public struct Game
