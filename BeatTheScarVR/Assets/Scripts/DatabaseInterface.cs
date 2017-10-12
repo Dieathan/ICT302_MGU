@@ -14,8 +14,8 @@ using UnityEngine;
 public class DatabaseInterface
 {
 
-    private List<Game> m_gameList;
-    private List<GameInstance> m_programGames;
+    private List<GameDataHelper.Game> m_gameList;
+    private List<GameDataHelper.GameInstance> m_programGames;
     private List<string> m_restrictions;
     private string m_userID;
 
@@ -25,27 +25,34 @@ public class DatabaseInterface
     {
         con = new SqliteConnection("URI=file:..\\KinesisArcade.sqlite");
         con.Open();
-        m_gameList = new List<Game>();
-        m_programGames = new List<GameInstance>();
+        m_gameList = new List<GameDataHelper.Game>();
+        m_programGames = new List<GameDataHelper.GameInstance>();
         m_restrictions = new List<string>();
         setUser();
         buildGameList();
         setProgramList();
+        setRestrictions();
+    }
+
+    public DatabaseInterface(int x)
+    {
+
     }
 
     private void setUser()
     { 
         StreamReader sr = File.OpenText("..\\currentuser.txt");
         m_userID = sr.ReadLine();
+        GameDataHelper.setPatient(m_userID);
     }
 
     /**
      * @param String url
      */
-    private void addPatientData(GameInstance game, string userid, int score, int timePlayed, string videourl)
+    public void addPatientData(GameDataHelper.GameInstance game, int score, int timePlayed, string videourl)
     {
         SqliteCommand cmd1 = new SqliteCommand();
-        cmd1.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + userid + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
+        cmd1.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + m_userID + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
         cmd1.ExecuteNonQuery();
 
         SqliteCommand cmd2 = new SqliteCommand();
@@ -57,7 +64,7 @@ public class DatabaseInterface
      */
      private void buildGameList()
     {
-        Game game;
+        GameDataHelper.Game game;
 
         SqliteCommand cmd = new SqliteCommand();
         cmd.Connection = con;
@@ -72,7 +79,7 @@ public class DatabaseInterface
         for (int i = 0; i < count; i++)
         {
             read.Read();
-            game = new Game();
+            game = new GameDataHelper.Game();
             game.m_id = read.GetInt32(0);
             game.m_coordinates = read.GetString(1);
             game.m_title = read.GetString(2);
@@ -85,7 +92,7 @@ public class DatabaseInterface
     /**
      * 
      */
-    private List<Game> getGameList()
+    public List<GameDataHelper.Game> getGameList()
     {
         return m_gameList;
     }
@@ -93,13 +100,13 @@ public class DatabaseInterface
     /**
      * 
      */
-    private bool programComplete()
+    public bool programComplete()
     {
         bool check = true;
 
         SqliteCommand cmd = new SqliteCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT ProgramID FROM PATIENT WHERE UserID = " + m_userID;
+        cmd.CommandText = "SELECT ProgramID FROM PATIENT WHERE UserID = '" + m_userID + "'";
         SqliteDataReader read = cmd.ExecuteReader();
         int pid = read.GetInt32(0);
 
@@ -126,7 +133,7 @@ public class DatabaseInterface
 
     private void setProgramList()
     {
-        GameInstance game;
+        GameDataHelper.GameInstance game;
 
         SqliteCommand cmd = new SqliteCommand();
         cmd.Connection = con;
@@ -141,7 +148,7 @@ public class DatabaseInterface
         for (int i = 0; i < count; i++)
         {
             read.Read();
-            game = new GameInstance();
+            game = new GameDataHelper.GameInstance();
             game.m_gameInstanceID = read.GetInt32(0);
             game.m_gameID = read.GetInt32(2);
             game.m_difficulty = read.GetString(3);
@@ -154,34 +161,112 @@ public class DatabaseInterface
     /**
      * 
      */
-    private List<GameInstance> getProgramGameList()
+    public List<GameDataHelper.GameInstance> getProgramGameList()
     {
         return m_programGames;
+    }
+
+    private void setRestrictions()
+    {
+        String game;
+
+        SqliteCommand cmd = new SqliteCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "SELECT COUNT(*) FROM RESTRICTION";
+        SqliteDataReader read = cmd.ExecuteReader();
+        read.Read();
+        int count = read.GetInt32(0);
+
+        cmd.CommandText = "SELECT * FROM RESTRICTION";
+        read = cmd.ExecuteReader();
+
+        for (int i = 0; i < count; i++)
+        {
+            read.Read();
+            if(read.GetBoolean(3))
+            {
+                for(int j = 0; j < m_gameList.Count; j++)
+                {
+                    if(read.GetInt32(1) == m_gameList.ElementAt(j).m_id)
+                    {
+                        game = m_gameList.ElementAt(j).m_title;
+                        m_restrictions.Add(game);
+                    }
+                }
+                
+            }
+            
+        }
     }
 
     /**
      * 
      */
-    private List<string> getRestrictions()
+    public List<string> getRestrictions()
     {
         return m_restrictions;
     }
 
-	public struct Game
+    public bool canFreePlay()
     {
-        public int m_id;
-        public string m_coordinates;
-        public string m_title;
-		public string m_description;
+        bool check = false;
+
+        SqliteCommand cmd = new SqliteCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "SELECT CanFreePlay FROM PATIENT WHERE UserID = '" + m_userID + "'";
+        SqliteDataReader read = cmd.ExecuteReader();
+        read.Read();
+        check = read.GetBoolean(0);
+
+        return check;
     }
 
-    public struct GameInstance
+	public GameDataHelper.GameInstance addGameInstance(string gameTitle, string difficulty, int time)
     {
-        public int m_gameInstanceID;
-        public int m_gameID;
-        public string m_difficulty;
-        public int m_duration;
-        public bool m_completed;
+        int gid = -1;
+        int ginstid;
+        int count = 0;
+        SqliteCommand cmd = new SqliteCommand();
+
+        for (int i = 0; i < m_gameList.Count; i++)
+        {
+            if(gameTitle.CompareTo(m_gameList.ElementAt(i).m_title) == 0)
+            {
+                gid = m_gameList.ElementAt(i).m_id;
+            }
+        }
+
+        if (gid >= 0)
+        {
+            cmd.Connection = con;
+            cmd.CommandText = "INSERT INTO GAMEINSTANCE(GameID, Difficulty, Duration) VALUES(" + gid + ", '" + difficulty + "', " + time + ")";
+            cmd.ExecuteNonQuery();
+        }
+
+        cmd.CommandText = "SELECT COUNT(*) FROM GAMESINSTANCE";
+        SqliteDataReader read = cmd.ExecuteReader();
+        read.Read();
+        int total = read.GetInt32(0);
+
+        cmd.CommandText = "SELECT GameInstance FROM GAMEINSTANCE";
+        read = cmd.ExecuteReader();
+        
+        while(count < total - 1)
+        {
+            read.Read();
+            count++;
+        }
+
+        read.Read();
+        ginstid = read.GetInt32(0);
+
+        GameDataHelper.GameInstance gi = new GameDataHelper.GameInstance();
+        gi.m_gameInstanceID = ginstid;
+        gi.m_gameID = gid;
+        gi.m_difficulty = difficulty;
+        gi.m_duration = time;
+
+        return gi;       
     }
 	
 }
