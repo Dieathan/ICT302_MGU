@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Supervisor main page</title>
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
-    <script src="main_page.js"></script>
+    <script src="js/main_page.js"></script>
+    <script src="js/accessdb.js"></script>
+    <script src="js/jquery.js"></script>
 </head>
 
 <body>
@@ -30,26 +32,26 @@
             <td>
                 <div id="id01" class="modal">
 
-                <form class="modal-content animate" action="/action_page.php">
+                <form name="CreatePatient" class="modal-content animate" action="">
 
                     <div class="container">
                         <label><b>Patient ID</b></label>
-                        <input type="text" placeholder="Enter Patient ID" name="uname" required>
+                        <input type="text" placeholder="Enter Patient ID" name="pid" required>
 
                         <label><b>First Name</b></label>
-                        <input type="password" placeholder="Enter First Name" name="psw" required>
+                        <input type="text" placeholder="Enter First Name" name="fn" required>
 
                         <label><b>Last Name</b></label>
-                        <input type="password" placeholder="Enter Last Name" name="psw" required>
+                        <input type="text" placeholder="Enter Last Name" name="ln" required>
 
                         <label><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="psw" required>
 
-                        <input type="checkbox" name="supervisor" value="yes">Is Supervisor<br>
+                        <input type="checkbox" name="supervisor" value=1>Is Supervisor<br>
                     </div>
 
                     <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="createbtn">Create</button>
+                        <button type="button" onclick="CDB()" class="createbtn">Create</button>
                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                     </div>
                 </form>
@@ -81,6 +83,40 @@
             </td>
         </tr>
     </table>
+
+<script>
+    function CDB()
+    {
+        /*var cn = new ActiveXObject("ADODB.Connection");
+
+        var strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source = KinesisArcade.mdb";
+        var rs = new ActiveXObject("ADODB.Recordset");
+
+// Assume there is a table in MS Access database with the name ” user_master  “, below is the query for authentication
+        var SQL = "SELECT * FROM USER";
+        cn.Open(strConn);
+        rs.Open(SQL, cn);*/
+
+        var myDB = new ACCESSdb("\\KinesisArcade.mdb");
+
+        var SQL = "DELETE * FROM USER WHERE UserID='1'";
+        var resultSet = myDB.query(SQL);
+
+        if(myDB.query(SQL))
+        {
+           alert("Yes");
+        }
+        else
+        {
+            alert("No")
+        }
+        //alert("No")
+
+
+    }
+
+
+</script>
 
 </body>
 
