@@ -273,12 +273,25 @@
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
+ <Reference Include="AForge.Video">
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ </Reference>
+ <Reference Include="AForge.Video.VFW">
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Drawing">
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/ICT302_MGU/BeatTheScarVR/Assets/Plugins/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/ICT302_MGU/BeatTheScarVR/Assets/Plugins/System.Data.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{438F3A23-3B01-6036-A655-EB4AEA99590A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
