@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3DC03B3B-8A76-A087-E58E-1BC3D8206E6D}</ProjectGuid>
+    <ProjectGuid>{53479AC9-446A-3EFB-9E81-463F2EB5312B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -215,25 +215,59 @@
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarSkinnedMeshRenderComponent.cs" />
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarSkinnedMeshRenderPBSComponent.cs" />
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarTouchController.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\IOVRInspectorContext.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRDiscomfortWarning.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRDiscomfortWarningSource.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRGazePointer.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRInputModule.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRInspector.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRInspectorContext.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRInspectorLoader.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRInspectorPanelBuilder.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRMousePointer.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRPhysicsRaycaster.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRPlatformMenu2.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRPointerEventData.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRRaycaster.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRRenderTrackerFrustum.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRScreenFade2.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRSettingsMenu.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRSliderLabelUpdater.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRUISettingsMenu.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRUserPanel.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\OVRWarningList.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\ParticleGazeCursor.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\UIUtils\OVRGazeEventTrigger.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\UIUtils\OVRGazeScroller.cs" />
+     <Compile Include="Assets\OVRInspector\Scripts\UIUtils\OVRProgressIndicator.cs" />
      <Compile Include="Assets\Scripts\ArcadeLogic.cs" />
-     <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\DatabaseInterface.cs" />
      <Compile Include="Assets\Scripts\GameDataHelper.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
+     <Compile Include="Assets\Scripts\GameManagementScript.cs" />
      <Compile Include="Assets\Scripts\InteractionHandler.cs" />
-     <Compile Include="Assets\Scripts\KinectVideoRecording.cs" />
+     <Compile Include="Assets\Scripts\Kinect\KinectVideoRecording.cs" />
+     <Compile Include="Assets\Scripts\Oculus\TouchController.cs" />
+     <Compile Include="Assets\Scripts\Oculus\TouchPointing.cs" />
+     <Compile Include="Assets\Scripts\Oculus\TouchPointingLaser.cs" />
      <Compile Include="Assets\Scripts\ProgramHelper.cs" />
      <Compile Include="Assets\Scripts\Security.cs" />
-     <Compile Include="Assets\Scripts\TouchController.cs" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarMaterialStateShader.cginc" />
      <None Include="Assets\OSPNative\THIRD_PARTY_NOTICES.txt" />
+     <None Include="Assets\OVRInspector\LICENSE.txt" />
+     <None Include="Assets\OVRInspector\Resources\Quit.txt" />
      <None Include="Assets\OVR\Resources\OVRMRUnlitTransparent.shader" />
      <None Include="Assets\OVR\Resources\OVRMRChromaKey.cginc" />
      <None Include="Assets\OculusPlatform\THIRD_PARTY_NOTICES.txt" />
+     <None Include="Assets\OVRInspector\Shaders\Particle Alpha Blend-AfterTrans-TransAlphaCutoff.shader" />
+     <None Include="Assets\OVRInspector\Shaders\Particle-Alpha-Premultiply-AfterTrans.shader" />
+     <None Include="Assets\OVRInspector\Shaders\UI-OptionalZTest.shader" />
      <None Include="Assets\OVR\Editor\AndroidManifest.OVRSubmission.xml" />
      <None Include="Assets\LICENSE.txt" />
+     <None Include="Assets\OVRInspector\Resources\OVRSettings.txt" />
      <None Include="Assets\OVR\Shaders\OVRColorRampAlpha.shader" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarSurfaceShader.shader" />
+     <None Include="Assets\OVRInspector\Shaders\UI-OptionalZTestFont.shader" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarSurfaceShaderSelfOccluding.shader" />
      <None Include="Assets\OVR\Resources\OVRMRUnlit.shader" />
      <None Include="Assets\OVR\Shaders\Unlit Crosshair.shader" />
@@ -243,10 +277,12 @@
      <None Include="Assets\OVR\THIRD_PARTY_NOTICES.txt" />
      <None Include="Assets\OVR\Resources\Underlay Transparent Occluder.shader" />
      <None Include="Assets\OVR\Resources\Alpha Premultiply.shader" />
+     <None Include="Assets\OVRInspector\Resources\UISettings.txt" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarSurfaceShaderPBS.shader" />
      <None Include="Assets\OSPNative\LICENSE.txt" />
      <None Include="Assets\OVR\Resources\OVRMRCameraFrame.shader" />
      <None Include="Assets\OVR\Resources\OVRMRClipPlane.shader" />
+     <None Include="Assets\Objects\Television\Font Textura.txt" />
      <None Include="Assets\OculusPlatform\LICENSE.txt" />
      <None Include="Assets\OVR\Resources\Underlay Impostor.shader" />
      <None Include="Assets\OvrAvatar\THIRD_PARTY_NOTICES.txt" />
@@ -274,24 +310,24 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_12-10_16-22/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_12-10_16-22/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_12-10_16-22/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_12-10_16-22/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_12-10_16-22/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{438F3A23-3B01-6036-A655-EB4AEA99590A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{809107E9-D7C8-5082-1416-5B9DEEA06B9A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
