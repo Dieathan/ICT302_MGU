@@ -216,6 +216,7 @@
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarSkinnedMeshRenderPBSComponent.cs" />
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarTouchController.cs" />
      <Compile Include="Assets\Scripts\ArcadeLogic.cs" />
+     <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\DatabaseInterface.cs" />
      <Compile Include="Assets\Scripts\GameDataHelper.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
