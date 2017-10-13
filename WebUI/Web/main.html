@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="CDB()" class="createbtn">Create</button>
+                        <button type="button" onclick="handleFiles()" class="createbtn">Create</button>
                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                     </div>
                 </form>
@@ -83,40 +83,6 @@
             </td>
         </tr>
     </table>
-
-<script>
-    function CDB()
-    {
-        /*var cn = new ActiveXObject("ADODB.Connection");
-
-        var strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source = KinesisArcade.mdb";
-        var rs = new ActiveXObject("ADODB.Recordset");
-
-// Assume there is a table in MS Access database with the name ” user_master  “, below is the query for authentication
-        var SQL = "SELECT * FROM USER";
-        cn.Open(strConn);
-        rs.Open(SQL, cn);*/
-
-        var myDB = new ACCESSdb("\\KinesisArcade.mdb");
-
-        var SQL = "DELETE * FROM USER WHERE UserID='1'";
-        var resultSet = myDB.query(SQL);
-
-        if(myDB.query(SQL))
-        {
-           alert("Yes");
-        }
-        else
-        {
-            alert("No")
-        }
-        //alert("No")
-
-
-    }
-
-
-</script>
 
 </body>
 
