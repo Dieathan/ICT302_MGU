@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.Odbc;
 using Mono.Data.SqliteClient;
 using UnityEngine;
+using System.Threading;
 
 /**
  * 
@@ -19,11 +21,11 @@ public class DatabaseInterface
     private List<string> m_restrictions;
     private string m_userID;
 
-    private SqliteConnection con;
+    private OdbcConnection con;
 
     public DatabaseInterface()
     {
-        con = new SqliteConnection("URI=file:..\\KinesisArcade.sqlite");
+        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\\Users\\Geoff\\Documents\\ICT302\\ICT302_MGU - Access\\KinesisArcade.mdb");
         con.Open();
         m_gameList = new List<GameDataHelper.Game>();
         m_programGames = new List<GameDataHelper.GameInstance>();
@@ -51,12 +53,13 @@ public class DatabaseInterface
      */
     public void addPatientData(GameDataHelper.GameInstance game, int score, int timePlayed, string videourl)
     {
-        SqliteCommand cmd1 = new SqliteCommand();
+        OdbcCommand cmd1 = new OdbcCommand();
         cmd1.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + m_userID + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
         cmd1.ExecuteNonQuery();
 
-        SqliteCommand cmd2 = new SqliteCommand();
+        OdbcCommand cmd2 = new OdbcCommand();
         cmd2.CommandText = "UPDATE GAMEINSTANCE SET Completed = 1 WHERE GameInstanceID = " + game.m_gameInstanceID;
+        cmd2.ExecuteNonQuery();
     }
 
     /**
@@ -66,12 +69,13 @@ public class DatabaseInterface
     {
         GameDataHelper.Game game;
 
-        SqliteCommand cmd = new SqliteCommand();
+        OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
         cmd.CommandText = "SELECT COUNT(*) FROM GAME";
-        SqliteDataReader read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         int count = read.GetInt32(0);
+        read.Close();
 
         cmd.CommandText = "SELECT * FROM GAME";
         read = cmd.ExecuteReader();
@@ -104,16 +108,17 @@ public class DatabaseInterface
     {
         bool check = true;
 
-        SqliteCommand cmd = new SqliteCommand();
+        OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
         cmd.CommandText = "SELECT ProgramID FROM PATIENT WHERE UserID = '" + m_userID + "'";
-        SqliteDataReader read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
         int pid = read.GetInt32(0);
 
         cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE WHERE ProgramID = " + pid;
         read = cmd.ExecuteReader();
         read.Read();
         int count = read.GetInt32(0);
+        read.Close();
 
         cmd.CommandText = "SELECT Completed FROM GAMEINSTANCE WHERE ProgramID = " + pid;
         read = cmd.ExecuteReader();
@@ -135,13 +140,14 @@ public class DatabaseInterface
     {
         GameDataHelper.GameInstance game;
 
-        SqliteCommand cmd = new SqliteCommand();
+        OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
         cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE";
-        SqliteDataReader read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         int count = read.GetInt32(0);
-        
+        read.Close();
+
         cmd.CommandText = "SELECT * FROM GAMEINSTANCE";
         read = cmd.ExecuteReader();
 
@@ -170,12 +176,13 @@ public class DatabaseInterface
     {
         String game;
 
-        SqliteCommand cmd = new SqliteCommand();
+        OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
         cmd.CommandText = "SELECT COUNT(*) FROM RESTRICTION";
-        SqliteDataReader read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         int count = read.GetInt32(0);
+        read.Close();
 
         cmd.CommandText = "SELECT * FROM RESTRICTION";
         read = cmd.ExecuteReader();
@@ -211,10 +218,10 @@ public class DatabaseInterface
     {
         bool check = false;
 
-        SqliteCommand cmd = new SqliteCommand();
+        OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
         cmd.CommandText = "SELECT CanFreePlay FROM PATIENT WHERE UserID = '" + m_userID + "'";
-        SqliteDataReader read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         check = read.GetBoolean(0);
 
@@ -226,7 +233,7 @@ public class DatabaseInterface
         int gid = -1;
         int ginstid;
         int count = 0;
-        SqliteCommand cmd = new SqliteCommand();
+        OdbcCommand cmd = new OdbcCommand();
 
         for (int i = 0; i < m_gameList.Count; i++)
         {
@@ -244,9 +251,10 @@ public class DatabaseInterface
         }
 
         cmd.CommandText = "SELECT COUNT(*) FROM GAMESINSTANCE";
-        SqliteDataReader read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         int total = read.GetInt32(0);
+        read.Close();
 
         cmd.CommandText = "SELECT GameInstance FROM GAMEINSTANCE";
         read = cmd.ExecuteReader();
