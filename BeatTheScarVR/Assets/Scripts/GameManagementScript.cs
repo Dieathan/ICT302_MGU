@@ -16,17 +16,13 @@ public class GameManagementScript : MonoBehaviour{
 
     void Start () {
         selectedAracde = "";
+        isOpenMenu = false;
     }
 
 	// Update is called once per frame
 	void Update () {
-        if(selectedAracde != "")
-        {
-            Debug.Log(selectedAracde);
-            if (selectedAracde == "Shooter Arcade")
-                SceneManager.LoadScene("Game");
-        }
-        
+        CheckEnterGameScene();
+        CheckOpenMenu();
     }
 
     public void SelectArcade(string arcadeName)
@@ -34,5 +30,34 @@ public class GameManagementScript : MonoBehaviour{
         selectedAracde = arcadeName;
     }
 
+    private void CheckEnterGameScene()
+    {
+        if (selectedAracde != "")
+        {
+            Debug.Log("CheckEnterGameScene() - " + selectedAracde);
+            if (selectedAracde == "Shooter Arcade")
+                SceneManager.LoadScene("Game");
+        }
+    }
+
+    private void CheckOpenMenu()
+    {
+        if (OVRInput.GetDown(OVRInput.Button.Start))
+        {
+            if (!isOpenMenu)
+            {
+                GameMenu.instance.RequestOpenMenu();
+                isOpenMenu = true;
+            }
+            else
+            {
+                GameMenu.instance.RequestCloseMenu();
+                isOpenMenu = false;
+            }
+        }
+    }
+
     private string selectedAracde;
+
+    private bool isOpenMenu;
 }
