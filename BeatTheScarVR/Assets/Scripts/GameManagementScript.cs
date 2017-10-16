@@ -30,6 +30,26 @@ public class GameManagementScript : MonoBehaviour{
         selectedAracde = arcadeName;
     }
 
+    public void OVRCamRecenter()
+    {
+        OVRRecenterManagerScript.instance.RequestRecenter();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void SetIsOpenMenu(bool val)
+    {
+        isOpenMenu = val;
+    }
+
+    public bool GetIsOpenMenu()
+    {
+        return isOpenMenu;
+    }
+
     private void CheckEnterGameScene()
     {
         if (selectedAracde != "")
