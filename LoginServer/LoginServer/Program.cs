@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
+using System.Data.Odbc;
 using System.Diagnostics;
 
 namespace LoginServer
@@ -19,23 +19,23 @@ namespace LoginServer
             int m_count = 0;
             List<String> m_userIDList = new List<String>();
 
-            SQLiteConnection con = new SQLiteConnection("data source=..\\..\\..\\..\\KinesisArcade.sqlite");
+            OdbcConnection con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb)};DBQ=..\\..\\..\\..\\KinesisArcade.mdb");
             con.Open();
 
-            SQLiteCommand m_createLoginInstance = con.CreateCommand();
-            SQLiteCommand m_checkPassword = con.CreateCommand();
-            SQLiteCommand m_checkUser = con.CreateCommand();
-            SQLiteCommand m_getCount = con.CreateCommand();
+            OdbcCommand m_createLoginInstance = con.CreateCommand();
+            OdbcCommand m_checkPassword = con.CreateCommand();
+            OdbcCommand m_checkUser = con.CreateCommand();
+            OdbcCommand m_getCount = con.CreateCommand();
 
-            m_getCount.CommandText = "SELECT COUNT(*) FROM USER";
+            m_getCount.CommandText = "SELECT COUNT(*) FROM [USER]";
             m_getCount.Connection = con;
-            SQLiteDataReader readerC = m_getCount.ExecuteReader();
+            OdbcDataReader readerC = m_getCount.ExecuteReader();
             readerC.Read();
             m_count = readerC.GetInt32(0);
 
             m_checkUser.CommandText = "SELECT UserID FROM [USER]";
             m_checkUser.Connection = con;
-            SQLiteDataReader readerU = m_checkUser.ExecuteReader();
+            OdbcDataReader readerU = m_checkUser.ExecuteReader();
 
             for (int i = 0; i < m_count; i++)
             {
@@ -70,9 +70,9 @@ namespace LoginServer
 
             Console.WriteLine("Password: ");
             m_password = Console.ReadLine();
-            m_checkPassword.CommandText = "SELECT UserID, Password, IsSupervisor FROM [USER] WHERE UserID = \"" + m_userid + "\"";
+            m_checkPassword.CommandText = "SELECT UserID, Password, IsSupervisor FROM [USER] WHERE UserID = '" + m_userid + "'";
             m_checkPassword.Connection = con;
-            SQLiteDataReader readerP = m_checkPassword.ExecuteReader();
+            OdbcDataReader readerP = m_checkPassword.ExecuteReader();
             readerP.Read();
             string password = readerP.GetString(1);
 

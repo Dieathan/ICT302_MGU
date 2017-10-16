@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.Odbc;
-using Mono.Data.SqliteClient;
 using UnityEngine;
 using System.Threading;
 
@@ -25,7 +24,7 @@ public class DatabaseInterface
 
     public DatabaseInterface()
     {
-        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\\Users\\Geoff\\Documents\\ICT302\\ICT302_MGU - Access\\KinesisArcade.mdb");
+        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:..\\KinesisArcade.mdb");
         con.Open();
         m_gameList = new List<GameDataHelper.Game>();
         m_programGames = new List<GameDataHelper.GameInstance>();
