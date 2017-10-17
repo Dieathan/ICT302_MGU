@@ -1,4 +1,5 @@
 var modal = document.getElementById('id01');
+var FileN = "C:\\Study/Murdoch/2017_S2/ICT302/ICT302_MGU/KinesisArcade.mdb";
 
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -7,12 +8,6 @@ window.onclick = function(event) {
 }
 
 function handleFiles()
-{
-    initDatabase();
-    //CreateDatabase();
-}
-
-function initDatabase()
 {
     var pid=document.forms["CreatePatient"]["pid"].value;
     var fn=document.forms["CreatePatient"]["fn"].value;
@@ -25,18 +20,60 @@ function initDatabase()
         var sup=document.forms["CreatePatient"]["supervisor"].value;
     }
 
-    //var NewString=pid+","+fn+","+ln+","+psw+","+sup;
-    //alert(insetString);
+    if( (pid == "")||(fn == "")||(ln == "")||(psw == "") ){
+        alert("Content must be filled out");
+        return false;
+    }
 
-    var FileN = "C:\\Study/Murdoch/2017_S2/ICT302/ICT302_MGU/WebUI/Web/js/KinesisArcade.mdb";
+    CreateNewPatient(pid,fn,ln,psw,sup);
+    //CreateDatabase();
+}
+
+function CreateNewPatient(pid,fn,ln,psw,sup)
+{
+
+    var myDB = new ACCESSdb(FileN);
+
+    var SQL2 = "SELECT FirstName FROM [USER] WHERE UserID='"+pid+"';";
+    var rsXML2 = myDB.query(SQL2, {xml:true});
+
+    if(rsXML2)
+    {
+        alert("User Exsit!");
+    }
+    else
+    {
+        var SQL = "INSERT INTO [USER] VALUES('"+pid+"', '"+psw+"', "+sup+",'"+fn+"','"+ln+"');";
+        var rsXML = myDB.query(SQL, {xml:true});
+        alert("New User Added!");
+    }
+
+
+
+}
+
+function AccessCurrentPatient()
+{
+    var pid=document.forms["CurrentPatient"]["pid"].value;
+
+
     //src = scripts[scripts.length-1].src;
     //alert(scripts);
     //var myDB = new ACCESSdb("C:\\Study/Murdoch/2017_S2/ICT302/ICT302_MGU/WebUI/Web/js/KinesisArcade.mdb");
     var myDB = new ACCESSdb(FileN);
-    var SQL = "SELECT FirstName FROM [USER] WHERE UserID='1';";
+    var SQL = "SELECT FirstName FROM [USER] WHERE UserID='"+pid+"';";
     var rsXML = myDB.query(SQL, {xml:true});
-    var FN=rsXML.getElementsByTagName("FirstName")[0].childNodes[0].nodeValue;
-    alert(FN);
+
+    if(rsXML)
+    {
+        var FN=rsXML.getElementsByTagName("FirstName")[0].childNodes[0].nodeValue;
+        alert(FN);
+        window.location.href = "CurrentPatient.html";
+    }
+    else
+    {
+        alert("No such patient! Try again!")
+    }
 
 }
 
