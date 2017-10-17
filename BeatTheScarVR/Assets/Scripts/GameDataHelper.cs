@@ -36,7 +36,7 @@ public static class GameDataHelper
      * @param int score 
      * @param int time
      */
-    public static bool AddMetricsToDatabase(GameInstance game, int score, int time)
+    public static bool AddMetricsToDatabase(int score, int time)
     {
         DatabaseInterface dbInterface = new DatabaseInterface(0);
         bool success = false;
@@ -46,12 +46,12 @@ public static class GameDataHelper
             stopRecord();
         }
 
-        dbInterface.addPatientData(game, score, time, m_url);
+        dbInterface.addPatientData(m_currentGame, score, time, m_url);
 
         return success;
     }
 
-    public static void createGameInstance(string gameTitle, string difficulty, int time)
+    public static void addGameInstance(string gameTitle, string difficulty, int time)
     {
         DatabaseInterface db = new DatabaseInterface();
         m_currentGame = db.addGameInstance(gameTitle, difficulty, time);
@@ -79,6 +79,11 @@ public static class GameDataHelper
     public static bool getRecord()
     {
         return m_kinectRecord;
+    }
+
+    public static GameInstance getCurrentGame()
+    {
+        return m_currentGame;
     }
 
     public static void setPatient(string pid)

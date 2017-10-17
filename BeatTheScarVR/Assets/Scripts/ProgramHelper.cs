@@ -37,4 +37,9 @@ public class ProgramHelper
     {
         return m_currentGame;
     }
+
+    public string gameInstanceDetails(int index)
+    {
+        return m_dbInterface.getGameTitle(index) + "    " + m_program.ElementAt(index).m_difficulty + "    " + m_program.ElementAt(index).m_duration;
+    }
 }

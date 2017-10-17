@@ -276,4 +276,16 @@ public class DatabaseInterface
         return gi;       
     }
 	
+    public string getGameTitle(int gameID)
+    {
+        for(int i = 0; i < m_gameList.Count; i++)
+        {
+            if(gameID == m_gameList.ElementAt(i).m_id)
+            {
+                return m_gameList.ElementAt(i).m_title;
+            }
+        }
+
+        return "Title Not Found";
+    }
 }

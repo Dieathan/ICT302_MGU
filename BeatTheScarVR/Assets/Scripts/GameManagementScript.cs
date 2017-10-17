@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
 
-    public OVRRecenterManagerScript ovrRecenterManager = null;
-    public GameMenu gameMenu = null;
-
     void Awake()
     {
         if (instance == null)
@@ -18,7 +15,7 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     void Start () {
-        selectedAracde = "";
+        selectedArcade = "";
         isOpenMenu = false;
     }
 
@@ -30,12 +27,12 @@ public class GameManagementScript : MonoBehaviour{
 
     public void SelectArcade(string arcadeName)
     {
-        selectedAracde = arcadeName;
+        selectedArcade = arcadeName;
     }
 
     public void OVRCamRecenter()
     {
-        ovrRecenterManager.RequestRecenter();
+        OVRRecenterManagerScript.instance.RequestRecenter();
     }
 
     public void QuitGame()
@@ -55,10 +52,10 @@ public class GameManagementScript : MonoBehaviour{
 
     private void CheckEnterGameScene()
     {
-        if (selectedAracde != "")
+        if (selectedArcade != "")
         {
-            Debug.Log("CheckEnterGameScene() - " + selectedAracde);
-            if (selectedAracde == "Shooter Arcade")
+            Debug.Log("CheckEnterGameScene() - " + selectedArcade);
+            if (selectedArcade == "Shooter Arcade")
                 SceneManager.LoadScene("Game");
         }
     }
@@ -69,18 +66,18 @@ public class GameManagementScript : MonoBehaviour{
         {
             if (!isOpenMenu)
             {
-                gameMenu.RequestOpenMenu();
+                GameMenu.instance.RequestOpenMenu();
                 isOpenMenu = true;
             }
             else
             {
-                gameMenu.RequestCloseMenu();
+                GameMenu.instance.RequestCloseMenu();
                 isOpenMenu = false;
             }
         }
     }
 
-    private string selectedAracde;
+    private string selectedArcade;
 
     private bool isOpenMenu;
 }

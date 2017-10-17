@@ -14,7 +14,7 @@ public class GameLogic : MonoBehaviour
     GameDataHelper.GameInstance game;
     int playerScore = 0;
     int time = 0;
-    int wallSpeed = 0;
+    double wallSpeed = 0;
     // UnityCoordX wallCoordX
     // UnityCoordY wallCoordY
     // UnityCoordZ wallCoordZ
@@ -25,22 +25,25 @@ public class GameLogic : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        game = GameDataHelper.GetCurrentGame();
+        game = GameDataHelper.getCurrentGame();
         GameDataHelper.record();
-        switch (game.difficulty()){
+        switch (game.m_difficulty){
             case "easy":
                 setEasy();
+                break;
             case "medium":
                 setMedium();
+                break;
             case "hard":
                 setHard();
+                break;
         }
         audioSource = GetComponent<AudioSource>();
     }
 
     void OnDelete()
     {
-        GameDataHelper.AddMetricsToDatabase(score, time);
+        GameDataHelper.AddMetricsToDatabase(playerScore, time);
     }
 
     // Update is called once per frame
