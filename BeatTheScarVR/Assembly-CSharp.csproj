@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FEC63E89-06C3-B0BE-2CCC-8AABD4221A7A}</ProjectGuid>
+    <ProjectGuid>{B14FBC07-4F90-336A-58B6-0AF9EC070142}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -245,9 +245,10 @@
      <Compile Include="Assets\Scripts\GameDataHelper.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\GameManagementScript.cs" />
-     <Compile Include="Assets\Scripts\GameMenu.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\GameMenu.cs" />
      <Compile Include="Assets\Scripts\InteractionHandler.cs" />
      <Compile Include="Assets\Scripts\Kinect\KinectVideoRecording.cs" />
+     <Compile Include="Assets\Scripts\Oculus\OVRRecenterManagerScript.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchController.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchPointing.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchPointingLaser.cs" />
@@ -311,24 +312,24 @@
  <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_15-10_14.30/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_15-10_14.30/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_15-10_14.30/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_15-10_14.30/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_15-10_14.30/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{A814ED51-862C-EA82-2220-0CEF32382DA6}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{84623EEB-A407-DB6B-15F2-F926355BADBC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
