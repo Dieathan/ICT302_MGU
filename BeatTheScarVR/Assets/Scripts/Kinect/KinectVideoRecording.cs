@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 /**
  * 
  */
-public class KinectVideoRecording {
+public class KinectVideoRecording : MonoBehaviour{
 
     private KinectSensor ks;
     private ColorFrameReader cfr;
@@ -32,14 +32,23 @@ public class KinectVideoRecording {
     ImageCodecInfo myImageCodecInfo;
     EncoderParameters myEncoderParameters;
 
-    /**
-     * 
-     */
-    public KinectVideoRecording()
+    void Start()
     {
         initKinect();
         initEncoder();
+        record();
     }
+
+    void Update()
+    {
+
+    }
+
+    void OnApplicationQuit()
+    {
+        string saveFile = close("something");
+    }
+
 
     private void initKinect()
     {
@@ -50,6 +59,7 @@ public class KinectVideoRecording {
         colorData = new byte[frameSize];
         format = ColorImageFormat.Bgra;
         imageSerial = 0;
+        count = 0;
     }
 
     private void initEncoder()
@@ -84,8 +94,13 @@ public class KinectVideoRecording {
             Marshal.Copy(colorData, 0, bmpData.Scan0, colorData.Length);
             bmpSource.UnlockBits(bmpData);
 
-            bmpSource.Save("..\\ffmpeg\\Images\\img" + (imageSerial++) + ".jpeg", myImageCodecInfo, myEncoderParameters);
+            if (count % 3 == 0)
+            {
+                bmpSource.Save("..\\ffmpeg\\Images\\img" + (imageSerial++) + ".jpeg", myImageCodecInfo, myEncoderParameters);
+            }
         }
+
+        count++;
     }
 
     private ImageCodecInfo GetEncoderInfo(String mimeType)
@@ -101,7 +116,7 @@ public class KinectVideoRecording {
         return null;
     }
 
-    public string close(string pid, int game)
+    public string close(string pid)
     {
         string url;
         DateTime dt = DateTime.Now;
@@ -114,7 +129,7 @@ public class KinectVideoRecording {
         startInfo.UseShellExecute = false;
         startInfo.FileName = "cmd.exe";
         startInfo.Arguments = "/C cd ..\\ffmpeg\\bin " +
-            "& ffmpeg -y -r 20 -f image2 -s 1920x1080 -i ..\\Images\\img%d.jpeg -vcodec libx264 -crf 25 -pix_fmt yuv420p test.mp4 " +
+            "& ffmpeg -y -r 8 -f image2 -s 1920x1080 -i ..\\Images\\img%d.jpeg -vcodec libx264 -crf 25 -pix_fmt yuv420p test.mp4 " +
             "& del /Q ..\\Images\\*" +
             "& copy test.mp4 \"..\\Videos\\" + pid + " " + url + ".mp4\" " +
             "& del /Q test.mp4";

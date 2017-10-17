@@ -72,7 +72,7 @@ public static class GameDataHelper
 
     private static void stopRecord()
     {
-        m_url = m_kvr.close(m_pid, m_currentGame.m_gameID);
+        m_url = m_kvr.close(m_pid);
         m_kinectRecord = false;
     }
 

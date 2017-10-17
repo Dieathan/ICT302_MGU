@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
 
+    public OVRRecenterManagerScript ovrRecenterManager = null;
+    public GameMenu gameMenu = null;
+
     void Awake()
     {
         if (instance == null)
@@ -32,7 +35,7 @@ public class GameManagementScript : MonoBehaviour{
 
     public void OVRCamRecenter()
     {
-        OVRRecenterManagerScript.instance.RequestRecenter();
+        ovrRecenterManager.RequestRecenter();
     }
 
     public void QuitGame()
@@ -66,12 +69,12 @@ public class GameManagementScript : MonoBehaviour{
         {
             if (!isOpenMenu)
             {
-                GameMenu.instance.RequestOpenMenu();
+                gameMenu.RequestOpenMenu();
                 isOpenMenu = true;
             }
             else
             {
-                GameMenu.instance.RequestCloseMenu();
+                gameMenu.RequestCloseMenu();
                 isOpenMenu = false;
             }
         }
