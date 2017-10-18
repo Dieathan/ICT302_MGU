@@ -22,6 +22,9 @@ public class ArcadeLogic : MonoBehaviour
         m_security = new Security(m_dbInterface);
         m_programHelper = new ProgramHelper(m_dbInterface.getProgramGameList());
         m_gameList = m_dbInterface.getGameList();
+
+        //GameDataHelper.addGameInstance(m_gameList.ElementAt(0).m_title, "Easy", 30);
+        //GameDataHelper.AddMetricsToDatabase(20, 20);
     }
 
     // Update is called once per frame
