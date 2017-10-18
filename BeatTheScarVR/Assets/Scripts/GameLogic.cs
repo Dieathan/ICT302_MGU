@@ -28,13 +28,13 @@ public class GameLogic : MonoBehaviour
         game = GameDataHelper.getCurrentGame();
         GameDataHelper.record();
         switch (game.m_difficulty){
-            case "easy":
+            case 1:
                 setEasy();
                 break;
-            case "medium":
+            case 2:
                 setMedium();
                 break;
-            case "hard":
+            case 3:
                 setHard();
                 break;
         }

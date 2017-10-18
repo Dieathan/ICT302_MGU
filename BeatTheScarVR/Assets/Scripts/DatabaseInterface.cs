@@ -25,7 +25,7 @@ public class DatabaseInterface
 
     public DatabaseInterface()
     {
-        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:..\\KinesisArcade.mdb");
+        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\\KinesisArcade.mdb");
         con.Open();
         m_gameList = new List<GameDataHelper.Game>();
         m_programGames = new List<GameDataHelper.GameInstance>();
@@ -39,7 +39,7 @@ public class DatabaseInterface
 
     public DatabaseInterface(int x)
     {
-        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:..\\KinesisArcade.accdb");
+        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\\KinesisArcade.mdb");
         con.Open();
         setUser();
     }
@@ -93,30 +93,18 @@ public class DatabaseInterface
         int count = read.GetInt32(0);
         read.Close();
 
-        cmd.CommandText = "SELECT Title FROM GAME WHERE GameID = 1";
-        read = cmd.ExecuteReader();
-        read.Read();
-        Debug.Log(read.GetString(0));
-        read.Close();
-
         cmd.CommandText = "SELECT * FROM GAME";
         read = cmd.ExecuteReader();
 
         for (int i = 0; i < count; i++)
         {
             read.Read();
-            Debug.Log(read.GetString(2));
             game = new GameDataHelper.Game();
             game.m_id = read.GetInt32(0);
             game.m_coordinates = read.GetString(1);
             game.m_title = read.GetString(2);
             game.m_description = read.GetString(3);
             m_gameList.Add(game);          
-        }
-
-        if(String.Compare(m_gameList.ElementAt(0).m_title, "Silhouette Wall") < 0)
-        {
-            Debug.Log("Woot");
         }
     }
 
@@ -184,7 +172,7 @@ public class DatabaseInterface
             game = new GameDataHelper.GameInstance();
             game.m_gameInstanceID = read.GetInt32(0);
             game.m_gameID = read.GetInt32(2);
-            game.m_difficulty = read.GetString(3);
+            game.m_difficulty = read.GetInt32(3);
             game.m_duration = read.GetInt32(4);
 
             if(read.GetString(5) == "True")
@@ -268,27 +256,15 @@ public class DatabaseInterface
         return check;
     }
 
-	public GameDataHelper.GameInstance addGameInstance(string gameTitle, string difficulty, int time)
+	public GameDataHelper.GameInstance addGameInstance(int gid, int difficulty, int time)
     {
-        int gid = -1;
         int ginstid;
         int count = 0;
         OdbcCommand cmd = new OdbcCommand();
 
-        for (int i = 0; i < m_gameList.Count; i++)
-        {
-            if(String.Compare(gameTitle, m_gameList.ElementAt(i).m_title) == 0)
-            {
-                gid = m_gameList.ElementAt(i).m_id;
-            }
-        }
-
-        if (gid >= 0)
-        {
-            cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO GAMEINSTANCE(GameID, Difficulty, Duration) VALUES(" + gid + ", '" + difficulty + "', " + time + ")";
-            cmd.ExecuteNonQuery();
-        }
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO GAMEINSTANCE(GameID, Difficulty, Duration) VALUES(" + gid + ", '" + difficulty + "', " + time + ")";
+        cmd.ExecuteNonQuery();
 
         cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE";
         OdbcDataReader read = cmd.ExecuteReader();
@@ -328,5 +304,10 @@ public class DatabaseInterface
         }
 
         return "Title Not Found";
+    }
+
+    public void close()
+    {
+        con.Close();
     }
 }

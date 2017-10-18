@@ -51,7 +51,7 @@ public static class GameDataHelper
         return success;
     }
 
-    public static void addGameInstance(string gameTitle, string difficulty, int time)
+    public static void addGameInstance(int gameTitle, int difficulty, int time)
     {
         DatabaseInterface db = new DatabaseInterface(0);
         m_currentGame = db.addGameInstance(gameTitle, difficulty, time);
@@ -95,7 +95,7 @@ public static class GameDataHelper
     {
         public int m_id;
         public string m_coordinates;
-        public String m_title;
+        public string m_title;
         public string m_description;
     }
 
@@ -103,7 +103,7 @@ public static class GameDataHelper
     {
         public int m_gameInstanceID;
         public int m_gameID;
-        public string m_difficulty;
+        public int m_difficulty;
         public int m_duration;
         public bool m_completed;
     }

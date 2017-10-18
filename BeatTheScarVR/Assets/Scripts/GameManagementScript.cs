@@ -32,7 +32,7 @@ public class GameManagementScript : MonoBehaviour{
 
     public void OVRCamRecenter()
     {
-        OVRRecenterManagerScript.instance.RequestRecenter();
+        //OVRRecenterManagerScript.instance.RequestRecenter();
     }
 
     public void QuitGame()
@@ -66,12 +66,12 @@ public class GameManagementScript : MonoBehaviour{
         {
             if (!isOpenMenu)
             {
-                GameMenu.instance.RequestOpenMenu();
+                //GameMenu.instance.RequestOpenMenu();
                 isOpenMenu = true;
             }
             else
             {
-                GameMenu.instance.RequestCloseMenu();
+                //GameMenu.instance.RequestCloseMenu();
                 isOpenMenu = false;
             }
         }
