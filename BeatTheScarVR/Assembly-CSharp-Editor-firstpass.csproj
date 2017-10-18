@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5AFFD1F2-4559-1CF0-0456-15BD8692F455}</ProjectGuid>
+    <ProjectGuid>{86F78215-B069-95D5-45A1-A1D8F9E66DD0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
@@ -146,24 +146,24 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_17-10_10.55/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_17-10_10.55/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_17-10_10.55/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_17-10_10.55/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/MGU/Documents/BeatTheScarVR_17-10_10.55/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{BB9FF738-0830-8D00-18AA-C377A8A5B8B2}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{438F3A23-3B01-6036-A655-EB4AEA99590A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
