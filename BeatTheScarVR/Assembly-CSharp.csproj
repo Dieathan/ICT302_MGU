@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B14FBC07-4F90-336A-58B6-0AF9EC070142}</ProjectGuid>
+    <ProjectGuid>{3DC03B3B-8A76-A087-E58E-1BC3D8206E6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -44,10 +44,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>X:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>X:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -245,14 +245,18 @@
      <Compile Include="Assets\Scripts\GameDataHelper.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\GameManagementScript.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\ArcadeGameMenu.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\DifficultyMenu.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\DurationMenu.cs" />
      <Compile Include="Assets\Scripts\GameMenu\GameMenu.cs" />
      <Compile Include="Assets\Scripts\InteractionHandler.cs" />
+     <Compile Include="Assets\Scripts\Kinect\BodyManager.cs" />
+     <Compile Include="Assets\Scripts\Kinect\BodyView.cs" />
      <Compile Include="Assets\Scripts\Kinect\KinectVideoRecording.cs" />
      <Compile Include="Assets\Scripts\Oculus\OVRRecenterManagerScript.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchController.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchPointing.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchPointingLaser.cs" />
-     <Compile Include="Assets\Scripts\ProgramHelper.cs" />
      <Compile Include="Assets\Scripts\Security.cs" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarMaterialStateShader.cginc" />
      <None Include="Assets\OSPNative\THIRD_PARTY_NOTICES.txt" />
@@ -291,45 +295,45 @@
      <None Include="Assets\OVR\LICENSE.txt" />
      <None Include="Assets\OVR\Plugins\placeholder.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/BeatTheScarVR_16-10_15.30/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{84623EEB-A407-DB6B-15F2-F926355BADBC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{438F3A23-3B01-6036-A655-EB4AEA99590A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

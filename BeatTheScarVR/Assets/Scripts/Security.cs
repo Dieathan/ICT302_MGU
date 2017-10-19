@@ -21,9 +21,9 @@ public class Security {
 
     private DatabaseInterface m_dbInterface;
 
-    private List<string> m_restrictions;
+    private List<int> m_restrictions;
 
-	private bool canFreePlay()
+	public bool canFreePlay()
     {
         bool check = false;
 
@@ -35,13 +35,13 @@ public class Security {
         return check;
 	}
 	
-	private bool isRestricted(string gameTitle)
+	public bool isRestricted(int gameID)
     {
         bool check = false;
 
         for(int i = 0; i < m_restrictions.Count; i++)
         {
-            if(gameTitle.CompareTo(m_restrictions.ElementAt(i)) == 1)
+            if(gameID == m_restrictions.ElementAt(i))
             {
                 check = true;
             }

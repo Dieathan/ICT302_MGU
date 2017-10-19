@@ -4,19 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class OVRRecenterManagerScript : MonoBehaviour {
-    public static OVRRecenterManagerScript instance = null;
-
     public float countDownTime = 3.0f;
     public GameObject recenterButtonObj = null;
-
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
-    }
-
+    public GameMenu gameMenu = null;
+    
 	// Use this for initialization
 	void Start () {
         current_time = .0f;
@@ -42,7 +33,7 @@ public class OVRRecenterManagerScript : MonoBehaviour {
                 // reset button text
                 recenterButtonObj.GetComponent<Text>().text = "Recenter";
                 // close menu after recenter
-                GameMenu.instance.RequestCloseMenu();
+                gameMenu.RequestCloseMenu();
                 GameManagementScript.instance.SetIsOpenMenu(false);
             }
         }
