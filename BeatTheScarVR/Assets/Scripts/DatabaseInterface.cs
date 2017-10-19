@@ -20,6 +20,7 @@ public class DatabaseInterface
     private List<string> m_restrictions;
     private string m_userID;
     private int m_currentProgram;
+    private GameDataHelper.GameInstance m_currentGame;
 
     private OdbcConnection con;
 
@@ -87,23 +88,18 @@ public class DatabaseInterface
 
         OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT COUNT(*) FROM GAME";
-        OdbcDataReader read = cmd.ExecuteReader();
-        read.Read();
-        int count = read.GetInt32(0);
-        read.Close();
-
         cmd.CommandText = "SELECT * FROM GAME";
-        read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
 
-        for (int i = 0; i < count; i++)
+        while(read.Read())
         {
-            read.Read();
             game = new GameDataHelper.Game();
             game.m_id = read.GetInt32(0);
-            game.m_coordinates = read.GetString(1);
-            game.m_title = read.GetString(2);
-            game.m_description = read.GetString(3);
+            game.m_coordx = read.GetInt32(1);
+            game.m_coordy = read.GetInt32(2);
+            game.m_coordz = read.GetInt32(3);
+            game.m_title = read.GetString(4);
+            game.m_description = read.GetString(5);
             m_gameList.Add(game);          
         }
     }
@@ -125,23 +121,11 @@ public class DatabaseInterface
 
         OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT ProgramID FROM PATIENT WHERE UserID = '" + m_userID + "'";
+        cmd.CommandText = "SELECT Completed FROM GAMEINSTANCE WHERE ProgramID = " + m_currentProgram;
         OdbcDataReader read = cmd.ExecuteReader();
-        int pid = read.GetInt32(0);
 
-        cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE WHERE ProgramID = " + pid;
-        read = cmd.ExecuteReader();
-        read.Read();
-        int count = read.GetInt32(0);
-        read.Close();
-
-        cmd.CommandText = "SELECT Completed FROM GAMEINSTANCE WHERE ProgramID = " + pid;
-        read = cmd.ExecuteReader();
-
-        for (int i = 0; i < count; i++)
+        while(read.Read())
         {
-            read.Read();
-
             if (read.GetString(0) == "False")
             {
                 check = false;
@@ -151,24 +135,34 @@ public class DatabaseInterface
         return check;
     }
 
+    public void setCurrentGame()
+    {
+        for (int i = 0; i < m_programGames.Count; i++)
+        {
+            if (!m_programGames.ElementAt(i).m_completed)
+            {
+                m_currentGame = m_programGames.ElementAt(i);
+                break;
+            }
+        }
+    }
+
+    public GameDataHelper.GameInstance getCurrentGame()
+    {
+        return m_currentGame;
+    }
+
     private void setProgramList()
     {
         GameDataHelper.GameInstance game;
 
         OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE WHERE ProgramID = " + m_currentProgram;
-        OdbcDataReader read = cmd.ExecuteReader();
-        read.Read();
-        int count = read.GetInt32(0);
-        read.Close();
-
         cmd.CommandText = "SELECT * FROM GAMEINSTANCE WHERE ProgramID = " + m_currentProgram;
-        read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
 
-        for (int i = 0; i < count; i++)
+        while(read.Read())
         {
-            read.Read();
             game = new GameDataHelper.GameInstance();
             game.m_gameInstanceID = read.GetInt32(0);
             game.m_gameID = read.GetInt32(2);
@@ -201,18 +195,11 @@ public class DatabaseInterface
 
         OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT COUNT(*) FROM RESTRICTION";
-        OdbcDataReader read = cmd.ExecuteReader();
-        read.Read();
-        int count = read.GetInt32(0);
-        read.Close();
-
         cmd.CommandText = "SELECT * FROM RESTRICTION";
-        read = cmd.ExecuteReader();
+        OdbcDataReader read = cmd.ExecuteReader();
 
-        for (int i = 0; i < count; i++)
+        while(read.Read())
         {
-            read.Read();
             if(read.GetString(3) == "True")
             {
                 for(int j = 0; j < m_gameList.Count; j++)

@@ -86,6 +86,11 @@ public static class GameDataHelper
         return m_currentGame;
     }
 
+    public static void setCurrentGame(GameInstance gi)
+    {
+        m_currentGame = gi;
+    }
+
     public static void setPatient(string pid)
     {
         m_pid = pid;
@@ -94,7 +99,9 @@ public static class GameDataHelper
     public struct Game
     {
         public int m_id;
-        public string m_coordinates;
+        public int m_coordx;
+        public int m_coordy;
+        public int m_coordz;
         public string m_title;
         public string m_description;
     }

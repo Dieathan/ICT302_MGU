@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
-
+    public ArcadeGameMenu agm;
     void Awake()
     {
         if (instance == null)
@@ -16,6 +16,7 @@ public class GameManagementScript : MonoBehaviour{
 
     void Start () {
         selectedArcade = "";
+        enterGame = false;
         isOpenMenu = false;
     }
 
@@ -23,6 +24,7 @@ public class GameManagementScript : MonoBehaviour{
 	void Update () {
         CheckEnterGameScene();
         CheckOpenMenu();
+        CheckOpenArcadeGameMenu();
     }
 
     public void SelectArcade(string arcadeName)
@@ -50,14 +52,28 @@ public class GameManagementScript : MonoBehaviour{
         return isOpenMenu;
     }
 
-    private void CheckEnterGameScene()
+    private void CheckOpenArcadeGameMenu()
     {
         if (selectedArcade != "")
         {
             Debug.Log("CheckEnterGameScene() - " + selectedArcade);
             if (selectedArcade == "Shooter Arcade")
-                SceneManager.LoadScene("Game");
+                agm.RequestOpenMenu();
         }
+    }
+
+    private void CheckEnterGameScene()
+    {
+        if(enterGame)
+        {
+            GameDataHelper.addGameInstance(1, difficulty, duration);
+            SceneManager.LoadScene("Game");
+        }          
+    }
+
+    public void SetEnterGame()
+    {
+        enterGame = true;
     }
 
     private void CheckOpenMenu()
@@ -77,7 +93,23 @@ public class GameManagementScript : MonoBehaviour{
         }
     }
 
+    public void SetDifficulty(int diff)
+    {
+        difficulty = diff;
+    }
+
+    public void SetDuration(int dura)
+    {
+        duration = dura;
+    }
+
     private string selectedArcade;
 
     private bool isOpenMenu;
+
+    private bool enterGame;
+
+    private int difficulty;
+
+    private int duration;
 }

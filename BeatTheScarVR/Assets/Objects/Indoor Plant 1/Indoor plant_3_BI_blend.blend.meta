@@ -4,21 +4,7 @@ timeCreated: 1507648440
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Low-Poly_Plant_
-    100004: Low-Poly_Plant__001
-    400000: //RootNode
-    400002: Low-Poly_Plant_
-    400004: Low-Poly_Plant__001
-    2300000: Low-Poly_Plant_
-    2300002: Low-Poly_Plant__001
-    3300000: Low-Poly_Plant_
-    3300002: Low-Poly_Plant__001
-    4300000: Low-Poly_Plant__001
-    4300002: Low-Poly_Plant_
-    7400000: Default Take
-    9500000: //RootNode
+  fileIDToRecycleName: {}
   materials:
     importMaterials: 1
     materialName: 0
