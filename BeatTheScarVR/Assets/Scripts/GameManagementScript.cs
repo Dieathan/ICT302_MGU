@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,17 @@ public class GameManagementScript : MonoBehaviour{
         selectedArcade = "";
         enterGame = false;
         isOpenMenu = false;
+
+        m_dbInterface = new DatabaseInterface();
+        m_security = new Security(m_dbInterface);
+        m_progComplete = m_dbInterface.programComplete();
+
+        if (!m_progComplete)
+        {
+            GameDataHelper.setCurrentGame(m_dbInterface.getCurrentGame());
+        }
+
+        m_gameList = m_dbInterface.getGameList();
     }
 
 	// Update is called once per frame
@@ -30,6 +42,11 @@ public class GameManagementScript : MonoBehaviour{
     public void SelectArcade(string arcadeName)
     {
         selectedArcade = arcadeName;
+    }
+
+    public void SetGameID(int gameID)
+    {
+        selectedGameID = gameID;
     }
 
     public void OVRCamRecenter()
@@ -54,11 +71,14 @@ public class GameManagementScript : MonoBehaviour{
 
     private void CheckOpenArcadeGameMenu()
     {
-        if (selectedArcade != "")
+        if (m_security.canFreePlay())
         {
-            Debug.Log("CheckEnterGameScene() - " + selectedArcade);
-            if (selectedArcade == "Shooter Arcade")
-                agm.RequestOpenMenu();
+            if (selectedArcade != "" && !m_security.isRestricted(selectedGameID))
+            {
+                Debug.Log("CheckEnterGameScene() - " + selectedArcade);
+                if (selectedArcade == "Shooter Arcade")
+                    agm.RequestOpenMenu();
+            }
         }
     }
 
@@ -103,6 +123,37 @@ public class GameManagementScript : MonoBehaviour{
         duration = dura;
     }
 
+    public string gameInstanceDetails()
+    {
+        string gameTitle = "";
+
+        if(GameDataHelper.getCurrentGame().m_gameID == 1)
+        {
+            gameTitle = "Silhouette Wall";
+        }
+        else if(GameDataHelper.getCurrentGame().m_gameID == 2)
+        {
+            gameTitle = "Whack-A-Mole";
+        }
+
+        return "Game: " + gameTitle + "\n" + 
+               "Difficulty: " + GameDataHelper.getCurrentGame().m_difficulty + "\n" + 
+               "Duration: " + GameDataHelper.getCurrentGame().m_duration;
+    }
+
+    public int getGameID(int x, int y, int z)
+    {
+        for (int i = 0; i < m_gameList.Count; i++)
+        {
+            if (m_gameList.ElementAt(i).m_coordx == x && m_gameList.ElementAt(i).m_coordy == y && m_gameList.ElementAt(i).m_coordz == z)
+            {
+                return m_gameList.ElementAt(i).m_id;
+            }
+        }
+
+        return 0;
+    }
+
     private string selectedArcade;
 
     private bool isOpenMenu;
@@ -112,4 +163,11 @@ public class GameManagementScript : MonoBehaviour{
     private int difficulty;
 
     private int duration;
+
+    private int selectedGameID;
+
+    private DatabaseInterface m_dbInterface;
+    private Security m_security;
+    private List<GameDataHelper.Game> m_gameList;
+    private bool m_progComplete = false;
 }

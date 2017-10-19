@@ -288,7 +288,6 @@
     <Compile Include="Assets\OVRInspector\Scripts\UIUtils\OVRGazeEventTrigger.cs" />
     <Compile Include="Assets\OVRInspector\Scripts\UIUtils\OVRGazeScroller.cs" />
     <Compile Include="Assets\OVRInspector\Scripts\UIUtils\OVRProgressIndicator.cs" />
-    <Compile Include="Assets\Scripts\ArcadeLogic.cs" />
     <Compile Include="Assets\Scripts\DatabaseInterface.cs" />
     <Compile Include="Assets\Scripts\GameDataHelper.cs" />
     <Compile Include="Assets\Scripts\GameLogic.cs" />
@@ -297,6 +296,7 @@
     <Compile Include="Assets\Scripts\GameMenu\DifficultyMenu.cs" />
     <Compile Include="Assets\Scripts\GameMenu\DurationMenu.cs" />
     <Compile Include="Assets\Scripts\GameMenu\GameMenu.cs" />
+    <Compile Include="Assets\Scripts\GameMenu\ProgramMenu.cs" />
     <Compile Include="Assets\Scripts\InteractionHandler.cs" />
     <Compile Include="Assets\Scripts\Kinect\BodyManager.cs" />
     <Compile Include="Assets\Scripts\Kinect\BodyView.cs" />
@@ -306,6 +306,7 @@
     <Compile Include="Assets\Scripts\Oculus\TouchPointing.cs" />
     <Compile Include="Assets\Scripts\Oculus\TouchPointingLaser.cs" />
     <Compile Include="Assets\Scripts\Security.cs" />
+    <Compile Include="Assets\Scripts\Silhouette\WallManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LICENSE.txt" />

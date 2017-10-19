@@ -17,7 +17,7 @@ public class DatabaseInterface
 
     private List<GameDataHelper.Game> m_gameList;
     private List<GameDataHelper.GameInstance> m_programGames;
-    private List<string> m_restrictions;
+    private List<int> m_restrictions;
     private string m_userID;
     private int m_currentProgram;
     private GameDataHelper.GameInstance m_currentGame;
@@ -30,7 +30,7 @@ public class DatabaseInterface
         con.Open();
         m_gameList = new List<GameDataHelper.Game>();
         m_programGames = new List<GameDataHelper.GameInstance>();
-        m_restrictions = new List<string>();
+        m_restrictions = new List<int>();
         setUser();
         setProgramID();
         buildGameList();
@@ -191,7 +191,7 @@ public class DatabaseInterface
 
     private void setRestrictions()
     {
-        String game;
+        int game;
 
         OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
@@ -206,7 +206,7 @@ public class DatabaseInterface
                 {
                     if(read.GetInt32(1) == m_gameList.ElementAt(j).m_id)
                     {
-                        game = m_gameList.ElementAt(j).m_title;
+                        game = m_gameList.ElementAt(j).m_id;
                         m_restrictions.Add(game);
                         Debug.Log("restrictions: " + m_restrictions.Count);
                     }
@@ -220,7 +220,7 @@ public class DatabaseInterface
     /**
      * 
      */
-    public List<string> getRestrictions()
+    public List<int> getRestrictions()
     {
         return m_restrictions;
     }
