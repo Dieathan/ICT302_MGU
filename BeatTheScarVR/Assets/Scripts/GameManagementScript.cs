@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
     public ArcadeGameMenu agm;
+    public ProgramMenu pm;
     void Awake()
     {
         if (instance == null)
@@ -94,6 +95,11 @@ public class GameManagementScript : MonoBehaviour{
     public void SetEnterGame()
     {
         enterGame = true;
+    }
+
+    public void OpenProgramMenu()
+    {
+        pm.RequestOpenMenu();
     }
 
     private void CheckOpenMenu()
