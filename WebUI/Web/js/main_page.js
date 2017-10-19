@@ -1,5 +1,5 @@
 var modal = document.getElementById('id01');
-var FileN = "C:\\Study/Murdoch/2017_S2/ICT302/ICT302_MGU/KinesisArcade.mdb";
+
 
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -48,8 +48,6 @@ function CreateNewPatient(pid,fn,ln,psw,sup)
         alert("New User Added!");
     }
 
-
-
 }
 
 function AccessCurrentPatient()
@@ -66,9 +64,9 @@ function AccessCurrentPatient()
 
     if(rsXML)
     {
-        var FN=rsXML.getElementsByTagName("FirstName")[0].childNodes[0].nodeValue;
-        alert(FN);
         window.location.href = "CurrentPatient.html";
+        createCookie("pid",pid,2);
+        //document.getElementById("CP").innerHTML="H";
     }
     else
     {

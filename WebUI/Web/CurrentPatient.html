@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>current patient page</title>
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
-    <script src="js/main_page.js"></script>
+    <script src="js/current_patient_page.js"></script>
     <script src="js/accessdb.js"></script>
     <script src="js/jquery.js"></script>
+    <script src="js/Cookies.js"></script>
+    <script src="js/database_location.js"></script>
 </head>
 
 <body>
@@ -14,11 +16,18 @@
 <table id="current_table" align="center">
     <tr>
         <td>
-            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+            <div><p class="CP" id="CP"></p></div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button class="button1" onclick="CurrentProgram()" >
                 View Current Program</button>
 
         </td>
-    </tr>m
+    </tr>
 
     <tr>
         <td>
@@ -38,11 +47,23 @@
 
     <tr>
         <td>
+            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+                Game Restrictions</button>
+
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>
             <a href="main.html" class="button1">Go Back</a>
         </td>
     </tr>
 </table>
 
+<script>
+    document.getElementById("CP").innerHTML="Current Patient ID: "+getCookie("pid");
+</script>
 
 </body>
 

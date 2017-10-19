@@ -44,17 +44,17 @@ body {
 #current_table {
     background-color: #07335a;
     position: relative;
-    top: 260px;
+    top: 265px;
     width: 680px;
     height: 280px;
     text-align: center;
     font-style: normal;
     font-size: 10px;
-    padding: 5px;
+    padding: 1px;
 }
 
 #current_table,tr,td{
-    padding: 10px;
+    padding: 7px;
 }
 
 .button1{
@@ -172,4 +172,9 @@ span.psw {
     .cancelbtn {
         width: 100%;
     }
+}
+
+.CP{
+    font-size: 16px;
+    color: #fefefe;
 }

@@ -1,0 +1,26 @@
+body {
+    background-image: url("../res/images/current_program.jpg");
+    background-repeat: no-repeat;
+    background-position:top;
+    background-color: #081420;
+    -webkit-animation-name: BGC; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: BGC;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    margin: 0;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes BGC {
+    0%{background-color: #081420;}
+    50% {background-color: #07335a;}
+    100%{background-color: #081420;}
+}
+
+/* Standard syntax */
+@keyframes BGC {
+    0%{background-color: #081420;}
+    50% {background-color: #07335a;}
+    100%{background-color: #081420;}
+}
