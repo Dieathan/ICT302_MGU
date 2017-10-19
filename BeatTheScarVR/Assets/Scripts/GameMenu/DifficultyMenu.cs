@@ -11,7 +11,7 @@ public class DifficultyMenu : MonoBehaviour
     public GameObject Easy;
     public GameObject Medium;
     public GameObject Hard;
-    private GameManagementScript gms;
+    public GameObject gms;
 
     public float distance = 15.0f;
 
@@ -57,21 +57,21 @@ public class DifficultyMenu : MonoBehaviour
 
     public void SetEasy()
     {
-        gms.SetDifficulty(1);
+        gms.GetComponent<GameManagementScript>().SetDifficulty(1);
         SetWhite();
         Easy.GetComponent<Button>().image.color = Color.yellow;
     }
 
     public void SetMedium()
     {
-        gms.SetDifficulty(2);
+        gms.GetComponent<GameManagementScript>().SetDifficulty(2);
         SetWhite();
         Medium.GetComponent<Button>().image.color = Color.yellow;
     }
 
     public void SetHard()
     {
-        gms.SetDifficulty(3);
+        gms.GetComponent<GameManagementScript>().SetDifficulty(3);
         SetWhite();
         Hard.GetComponent<Button>().image.color = Color.yellow;
     }

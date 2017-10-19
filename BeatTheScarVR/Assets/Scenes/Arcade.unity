@@ -1440,6 +1440,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1588503468}
   cameraCentre: {fileID: 752771493}
+  gms: {fileID: 1819644440}
+  diffmenu: {fileID: 1579432590}
+  duramenu: {fileID: 807795073}
   distance: 10
 --- !u!4 &217012606
 Transform:
@@ -7822,6 +7825,7 @@ MonoBehaviour:
   Sixty: {fileID: 1022853649}
   Ninety: {fileID: 784862708}
   OneTwenty: {fileID: 408686761}
+  gms: {fileID: 1819644440}
   distance: 15
 --- !u!4 &807795076
 Transform:
@@ -13246,6 +13250,7 @@ MonoBehaviour:
   Easy: {fileID: 507139562}
   Medium: {fileID: 204987685}
   Hard: {fileID: 2091782113}
+  gms: {fileID: 1819644440}
   distance: 10
 --- !u!4 &1579432593
 Transform:
@@ -14839,7 +14844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a85a90f9ea681647ab860c51c634aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agm: {fileID: 0}
+  agm: {fileID: 217012604}
 --- !u!114 &1819644443
 MonoBehaviour:
   m_ObjectHideFlags: 0

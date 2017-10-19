@@ -245,6 +245,9 @@
      <Compile Include="Assets\Scripts\GameDataHelper.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\GameManagementScript.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\ArcadeGameMenu.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\DifficultyMenu.cs" />
+     <Compile Include="Assets\Scripts\GameMenu\DurationMenu.cs" />
      <Compile Include="Assets\Scripts\GameMenu\GameMenu.cs" />
      <Compile Include="Assets\Scripts\InteractionHandler.cs" />
      <Compile Include="Assets\Scripts\Kinect\BodyManager.cs" />
@@ -254,7 +257,6 @@
      <Compile Include="Assets\Scripts\Oculus\TouchController.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchPointing.cs" />
      <Compile Include="Assets\Scripts\Oculus\TouchPointingLaser.cs" />
-     <Compile Include="Assets\Scripts\ProgramHelper.cs" />
      <Compile Include="Assets\Scripts\Security.cs" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarMaterialStateShader.cginc" />
      <None Include="Assets\OSPNative\THIRD_PARTY_NOTICES.txt" />
@@ -314,19 +316,19 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/Cordell Smith/Desktop/Uni/2017/Semester 2/ICT302/temp to copy/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/temp/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

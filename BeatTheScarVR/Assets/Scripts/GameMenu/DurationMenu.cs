@@ -11,7 +11,7 @@ public class DurationMenu : MonoBehaviour {
     public GameObject Sixty;
     public GameObject Ninety;
     public GameObject OneTwenty;
-    private GameManagementScript gms;
+    public GameObject gms;
 
     public float distance = 15.0f;
 
@@ -57,28 +57,28 @@ public class DurationMenu : MonoBehaviour {
 
     public void SetThirty()
     {
-        gms.SetDuration(30);
+        gms.GetComponent<GameManagementScript>().SetDuration(30);
         SetWhite();
         Thirty.GetComponent<Button>().image.color = Color.yellow;
     }
 
     public void SetSixty()
     {
-        gms.SetDuration(60);
+        gms.GetComponent<GameManagementScript>().SetDuration(60);
         SetWhite();
         Sixty.GetComponent<Button>().image.color = Color.yellow;
     }
 
     public void SetNinety()
     {
-        gms.SetDuration(90);
+        gms.GetComponent<GameManagementScript>().SetDuration(90);
         SetWhite();
         Ninety.GetComponent<Button>().image.color = Color.yellow;
     }
 
     public void SetOneTwenty()
     {
-        gms.SetDuration(120);
+        gms.GetComponent<GameManagementScript>().SetDuration(120);
         SetWhite();
         OneTwenty.GetComponent<Button>().image.color = Color.yellow;
     }

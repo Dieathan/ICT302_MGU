@@ -6,9 +6,9 @@ public class ArcadeGameMenu : MonoBehaviour {
 
     public Transform player;
     public Transform cameraCentre;
-    private GameManagementScript gms;
-    private DifficultyMenu diffmenu;
-    private DurationMenu duramenu;
+    public GameObject gms;
+    public GameObject diffmenu;
+    public GameObject duramenu;
     private int difficulty;
     private int duration;
 
@@ -56,19 +56,23 @@ public class ArcadeGameMenu : MonoBehaviour {
 
     public void EnterGame()
     {
-        gms.SetEnterGame();
+        gms.GetComponent<GameManagementScript>().SetEnterGame();
     }
 
     public void OpenDifficultyMenu()
     {
-        diffmenu.RequestOpenMenu();
-        duramenu.RequestCloseMenu();
+        //diffmenu.RequestOpenMenu();
+        //duramenu.RequestCloseMenu();
+        diffmenu.GetComponent<DifficultyMenu>().RequestOpenMenu();
+        duramenu.GetComponent<DurationMenu>().RequestCloseMenu();
 
     }
 
     public void OpenDurationMenu()
     {
-        duramenu.RequestOpenMenu();
-        diffmenu.RequestCloseMenu();
+        //duramenu.RequestOpenMenu();
+        //diffmenu.RequestCloseMenu();
+        duramenu.GetComponent<DurationMenu>().RequestOpenMenu();
+        diffmenu.GetComponent<DifficultyMenu>().RequestCloseMenu();
     }
 }
