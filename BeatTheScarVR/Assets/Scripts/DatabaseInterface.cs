@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.Odbc;
-using Mono.Data.SqliteClient;
 using UnityEngine;
 using System.Threading;
 
@@ -20,17 +19,19 @@ public class DatabaseInterface
     private List<GameDataHelper.GameInstance> m_programGames;
     private List<string> m_restrictions;
     private string m_userID;
+    private int m_currentProgram;
 
     private OdbcConnection con;
 
     public DatabaseInterface()
     {
-        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\\Users\\Geoff\\Documents\\ICT302\\ICT302_MGU - Access\\KinesisArcade.mdb");
+        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\\KinesisArcade.mdb");
         con.Open();
         m_gameList = new List<GameDataHelper.Game>();
         m_programGames = new List<GameDataHelper.GameInstance>();
         m_restrictions = new List<string>();
         setUser();
+        setProgramID();
         buildGameList();
         setProgramList();
         setRestrictions();
@@ -38,14 +39,27 @@ public class DatabaseInterface
 
     public DatabaseInterface(int x)
     {
-
+        con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=..\\KinesisArcade.mdb");
+        con.Open();
+        setUser();
     }
 
     private void setUser()
     { 
         StreamReader sr = File.OpenText("..\\currentuser.txt");
         m_userID = sr.ReadLine();
-        GameDataHelper.setPatient(m_userID);
+        GameDataHelper.setPatient(m_userID);      
+    }
+
+    private void setProgramID()
+    {
+        OdbcCommand cmd = new OdbcCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "SELECT ProgramID FROM PATIENT WHERE UserID = '" + m_userID + "'";
+        OdbcDataReader read = cmd.ExecuteReader();
+        read.Read();
+        m_currentProgram = read.GetInt32(0);
+        read.Close();
     }
 
     /**
@@ -53,11 +67,13 @@ public class DatabaseInterface
      */
     public void addPatientData(GameDataHelper.GameInstance game, int score, int timePlayed, string videourl)
     {
-        OdbcCommand cmd1 = new OdbcCommand();
-        cmd1.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + m_userID + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
-        cmd1.ExecuteNonQuery();
+        OdbcCommand cmd = new OdbcCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO PATIENTDATA(GameID, UserID, Score, TimePlayed, VideoLocation) VALUES(" + game.m_gameID + ", '" + m_userID + "', " + score + ", " + timePlayed + ", '" + videourl + "')";
+        cmd.ExecuteNonQuery();
 
         OdbcCommand cmd2 = new OdbcCommand();
+        cmd2.Connection = con;
         cmd2.CommandText = "UPDATE GAMEINSTANCE SET Completed = 1 WHERE GameInstanceID = " + game.m_gameInstanceID;
         cmd2.ExecuteNonQuery();
     }
@@ -65,7 +81,7 @@ public class DatabaseInterface
     /**
      * 
      */
-     private void buildGameList()
+    private void buildGameList()
     {
         GameDataHelper.Game game;
 
@@ -88,8 +104,7 @@ public class DatabaseInterface
             game.m_coordinates = read.GetString(1);
             game.m_title = read.GetString(2);
             game.m_description = read.GetString(3);
-            game.m_coordinates = read.GetString(1);
-            m_gameList.Add(game);
+            m_gameList.Add(game);          
         }
     }
 
@@ -127,7 +142,7 @@ public class DatabaseInterface
         {
             read.Read();
 
-            if (!read.GetBoolean(0))
+            if (read.GetString(0) == "False")
             {
                 check = false;
             }
@@ -142,13 +157,13 @@ public class DatabaseInterface
 
         OdbcCommand cmd = new OdbcCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE";
+        cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE WHERE ProgramID = " + m_currentProgram;
         OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         int count = read.GetInt32(0);
         read.Close();
 
-        cmd.CommandText = "SELECT * FROM GAMEINSTANCE";
+        cmd.CommandText = "SELECT * FROM GAMEINSTANCE WHERE ProgramID = " + m_currentProgram;
         read = cmd.ExecuteReader();
 
         for (int i = 0; i < count; i++)
@@ -157,9 +172,17 @@ public class DatabaseInterface
             game = new GameDataHelper.GameInstance();
             game.m_gameInstanceID = read.GetInt32(0);
             game.m_gameID = read.GetInt32(2);
-            game.m_difficulty = read.GetString(3);
+            game.m_difficulty = read.GetInt32(3);
             game.m_duration = read.GetInt32(4);
-            game.m_completed = read.GetBoolean(5);
+
+            if(read.GetString(5) == "True")
+            {
+                game.m_completed = true;
+            }
+            else
+            {
+                game.m_completed = false;
+            }
             m_programGames.Add(game);
         }
     }
@@ -190,7 +213,7 @@ public class DatabaseInterface
         for (int i = 0; i < count; i++)
         {
             read.Read();
-            if(read.GetBoolean(3))
+            if(read.GetString(3) == "True")
             {
                 for(int j = 0; j < m_gameList.Count; j++)
                 {
@@ -198,6 +221,7 @@ public class DatabaseInterface
                     {
                         game = m_gameList.ElementAt(j).m_title;
                         m_restrictions.Add(game);
+                        Debug.Log("restrictions: " + m_restrictions.Count);
                     }
                 }
                 
@@ -223,40 +247,32 @@ public class DatabaseInterface
         cmd.CommandText = "SELECT CanFreePlay FROM PATIENT WHERE UserID = '" + m_userID + "'";
         OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
-        check = read.GetBoolean(0);
+
+        if(read.GetString(0) == "True")
+        {
+            check = true;
+        }
 
         return check;
     }
 
-	public GameDataHelper.GameInstance addGameInstance(string gameTitle, string difficulty, int time)
+	public GameDataHelper.GameInstance addGameInstance(int gid, int difficulty, int time)
     {
-        int gid = -1;
         int ginstid;
         int count = 0;
         OdbcCommand cmd = new OdbcCommand();
 
-        for (int i = 0; i < m_gameList.Count; i++)
-        {
-            if(gameTitle.CompareTo(m_gameList.ElementAt(i).m_title) == 0)
-            {
-                gid = m_gameList.ElementAt(i).m_id;
-            }
-        }
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO GAMEINSTANCE(GameID, Difficulty, Duration) VALUES(" + gid + ", '" + difficulty + "', " + time + ")";
+        cmd.ExecuteNonQuery();
 
-        if (gid >= 0)
-        {
-            cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO GAMEINSTANCE(GameID, Difficulty, Duration) VALUES(" + gid + ", '" + difficulty + "', " + time + ")";
-            cmd.ExecuteNonQuery();
-        }
-
-        cmd.CommandText = "SELECT COUNT(*) FROM GAMESINSTANCE";
+        cmd.CommandText = "SELECT COUNT(*) FROM GAMEINSTANCE";
         OdbcDataReader read = cmd.ExecuteReader();
         read.Read();
         int total = read.GetInt32(0);
         read.Close();
 
-        cmd.CommandText = "SELECT GameInstance FROM GAMEINSTANCE";
+        cmd.CommandText = "SELECT GameInstanceID FROM GAMEINSTANCE";
         read = cmd.ExecuteReader();
         
         while(count < total - 1)
@@ -277,4 +293,21 @@ public class DatabaseInterface
         return gi;       
     }
 	
+    public string getGameTitle(int gameID)
+    {
+        for(int i = 0; i < m_gameList.Count; i++)
+        {
+            if(gameID == m_gameList.ElementAt(i).m_id)
+            {
+                return m_gameList.ElementAt(i).m_title;
+            }
+        }
+
+        return "Title Not Found";
+    }
+
+    public void close()
+    {
+        con.Close();
+    }
 }

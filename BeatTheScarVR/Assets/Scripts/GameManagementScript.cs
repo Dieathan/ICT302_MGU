@@ -15,24 +15,69 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     void Start () {
-        selectedAracde = "";
+        selectedArcade = "";
+        isOpenMenu = false;
     }
 
 	// Update is called once per frame
 	void Update () {
-        if(selectedAracde != "")
-        {
-            Debug.Log(selectedAracde);
-            if (selectedAracde == "Shooter Arcade")
-                SceneManager.LoadScene("Game");
-        }
-        
+        CheckEnterGameScene();
+        CheckOpenMenu();
     }
 
     public void SelectArcade(string arcadeName)
     {
-        selectedAracde = arcadeName;
+        selectedArcade = arcadeName;
     }
 
-    private string selectedAracde;
+    public void OVRCamRecenter()
+    {
+        //OVRRecenterManagerScript.instance.RequestRecenter();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void SetIsOpenMenu(bool val)
+    {
+        isOpenMenu = val;
+    }
+
+    public bool GetIsOpenMenu()
+    {
+        return isOpenMenu;
+    }
+
+    private void CheckEnterGameScene()
+    {
+        if (selectedArcade != "")
+        {
+            Debug.Log("CheckEnterGameScene() - " + selectedArcade);
+            if (selectedArcade == "Shooter Arcade")
+                SceneManager.LoadScene("Game");
+        }
+    }
+
+    private void CheckOpenMenu()
+    {
+        if (OVRInput.GetDown(OVRInput.Button.Start))
+        {
+            if (!isOpenMenu)
+            {
+                //GameMenu.instance.RequestOpenMenu();
+                isOpenMenu = true;
+            }
+            else
+            {
+                //GameMenu.instance.RequestCloseMenu();
+                isOpenMenu = false;
+            }
+        }
+    }
+
+    private string selectedArcade;
+
+    private bool isOpenMenu;
 }

@@ -66,15 +66,15 @@
             <td>
                 <div id="id02" class="modal">
 
-                    <form class="modal-content animate" action="/action_page.php">
+                    <form name="CurrentPatient" class="modal-content animate" action="/action_page.php">
 
                         <div class="container">
                             <label><b>Patient ID</b></label>
-                            <input type="text" placeholder="Enter Patient ID" name="uname" required>
+                            <input type="text" placeholder="Enter Patient ID" name="pid" required>
                         </div>
 
                         <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="createbtn">View</button>
+                            <button type="button" onclick="AccessCurrentPatient()" class="createbtn">View</button>
                             <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
                         </div>
                     </form>
