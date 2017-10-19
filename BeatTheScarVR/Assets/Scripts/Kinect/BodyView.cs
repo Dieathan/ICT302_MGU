@@ -5,9 +5,11 @@ using UnityEngine;
 using Windows.Kinect;
 
 public class BodyView : MonoBehaviour {
+    public GameObject parentObj = null;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -79,6 +81,11 @@ public class BodyView : MonoBehaviour {
         }
     }
 
+    public Dictionary<ulong, GameObject> GetBodies()
+    {
+        return _Bodies;
+    }
+
     public Material BoneMaterial;
     public GameObject BodyManager;
 
@@ -117,15 +124,21 @@ public class BodyView : MonoBehaviour {
     private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
+        if (parentObj != null)
+            body.transform.parent = parentObj.transform;
+        //body.transform.localPosition = Vector3.zero;
+        body.transform.localPosition = new Vector3(.0f, .0f, 30.0f);
+        body.transform.localRotation = Quaternion.identity;
+
 
         for (JointType jt = JointType.SpineBase; jt <= JointType.ThumbRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-            LineRenderer lr = jointObj.AddComponent<LineRenderer>();
-            lr.SetVertexCount(2);
-            lr.material = BoneMaterial;
-            lr.SetWidth(0.05f, 0.05f);
+            //LineRenderer lr = jointObj.AddComponent<LineRenderer>();
+            //lr.SetVertexCount(2);
+            //lr.material = BoneMaterial;
+            //lr.SetWidth(0.05f, 0.05f);
 
             jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             jointObj.name = jt.ToString();
@@ -149,20 +162,22 @@ public class BodyView : MonoBehaviour {
 
             Transform jointObj = bodyObject.transform.Find(jt.ToString());
             jointObj.localPosition = GetVector3FromJoint(sourceJoint);
-
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+            
+            //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
             {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                lr.SetColors(GetColorForState(sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+                //lr.SetPosition(0, jointObj.position);
+                //lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+                //Vector3 tempTargetJoint = GetVector3FromJoint(targetJoint.Value);
+                //tempTargetJoint += parentObj.transform.position;
+                //lr.SetPosition(1, tempTargetJoint);
+                //lr.SetColors(GetColorForState(sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
             }
             else
             {
-                lr.enabled = false;
+                //lr.enabled = false;
             }
         }
-
     }
 
     private static Vector3 GetVector3FromJoint(Windows.Kinect.Joint joint)
