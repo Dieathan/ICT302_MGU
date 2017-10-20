@@ -7,11 +7,12 @@
     <script src="js/current_patient_page.js"></script>
     <script src="js/accessdb.js"></script>
     <script src="js/jquery.js"></script>
-    <script src="js/Cookies.js"></script>
+    <script src="js/cookies.js"></script>
     <script src="js/database_location.js"></script>
 </head>
 
 <body>
+
 
 <table id="current_table" align="center">
     <tr>
@@ -31,7 +32,7 @@
 
     <tr>
         <td>
-            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+            <button class="button1" onclick="document.getElementById('new_program').style.display='block'" >
                 Add New Program</button>
 
         </td>
@@ -55,11 +56,37 @@
 
 
     <tr>
-        <td>
+        <td align="right">
             <a href="main.html" class="button1">Go Back</a>
         </td>
     </tr>
 </table>
+
+<table align="center">
+    <tr>
+        <td>
+            <div id="new_program" class="modal">
+
+                <form name="NewProgram" class="modal-content animate" action="">
+
+                    <div class="container">
+                        <label><b>Program ID</b></label>
+                        <input type="text" placeholder="Enter Program ID" name="pid" required>
+
+                    </div>
+
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" onclick="CreateNewProgram()" class="createbtn">Create</button>
+                        <button type="button" onclick="document.getElementById('new_program').style.display='none'" class="cancelbtn">Cancel</button>
+                    </div>
+                </form>
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+
 
 <script>
     document.getElementById("CP").innerHTML="Current Patient ID: "+getCookie("pid");
