@@ -24,3 +24,20 @@ body {
     50% {background-color: #07335a;}
     100%{background-color: #081420;}
 }
+
+#current_table {
+    background-color: #fefefe;
+    position: relative;
+    top: 265px;
+    width: 680px;
+    height: 280px;
+    text-align: center;
+    font-style: normal;
+    font-size: 10px;
+    padding: 1px;
+    border: 2px;
+}
+
+#current_table,tr,td{
+    padding: 7px;
+}
