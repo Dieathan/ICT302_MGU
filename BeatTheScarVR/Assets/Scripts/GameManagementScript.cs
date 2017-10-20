@@ -8,12 +8,18 @@ public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
     public ArcadeGameMenu agm;
     public ProgramMenu pm;
+    public GameMenu gameMenu;
+    public OVRRecenterManagerScript ovrRecenterManager;
+
     void Awake()
     {
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        m_dbInterface = new DatabaseInterface();
+        m_security = new Security(m_dbInterface);
     }
 
     void Start () {
@@ -21,8 +27,7 @@ public class GameManagementScript : MonoBehaviour{
         enterGame = false;
         isOpenMenu = false;
 
-        m_dbInterface = new DatabaseInterface();
-        m_security = new Security(m_dbInterface);
+        
         m_progComplete = m_dbInterface.programComplete();
 
         if (!m_progComplete)
@@ -52,7 +57,7 @@ public class GameManagementScript : MonoBehaviour{
 
     public void OVRCamRecenter()
     {
-        //OVRRecenterManagerScript.instance.RequestRecenter();
+        ovrRecenterManager.RequestRecenter();
     }
 
     public void QuitGame()
@@ -72,15 +77,15 @@ public class GameManagementScript : MonoBehaviour{
 
     private void CheckOpenArcadeGameMenu()
     {
-        if (m_security.canFreePlay())
-        {
-            if (selectedArcade != "" && !m_security.isRestricted(selectedGameID))
+       // if (m_security.canFreePlay())
+        //{
+            if (selectedArcade != "")
             {
                 Debug.Log("CheckEnterGameScene() - " + selectedArcade);
                 if (selectedArcade == "Shooter Arcade")
                     agm.RequestOpenMenu();
             }
-        }
+       // }
     }
 
     private void CheckEnterGameScene()
@@ -108,12 +113,12 @@ public class GameManagementScript : MonoBehaviour{
         {
             if (!isOpenMenu)
             {
-                //GameMenu.instance.RequestOpenMenu();
+                gameMenu.RequestOpenMenu();
                 isOpenMenu = true;
             }
             else
             {
-                //GameMenu.instance.RequestCloseMenu();
+                gameMenu.RequestCloseMenu();
                 isOpenMenu = false;
             }
         }

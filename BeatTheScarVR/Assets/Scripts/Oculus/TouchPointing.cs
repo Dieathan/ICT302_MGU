@@ -22,7 +22,7 @@ public class TouchPointing : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Arcade"))
             {
                 GameManagementScript.instance.SelectArcade(hit.collider.gameObject.name);
-                GameManagementScript.instance.SetGameID(GameManagementScript.instance.getGameID((int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.y, (int)hit.collider.gameObject.transform.position.z));
+                //GameManagementScript.instance.SetGameID(GameManagementScript.instance.getGameID((int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.y, (int)hit.collider.gameObject.transform.position.z));
             }
             else if(hit.collider.gameObject.CompareTag("Counter"))
             {

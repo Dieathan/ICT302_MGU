@@ -6,6 +6,8 @@ using Windows.Kinect;
 
 public class BodyView : MonoBehaviour {
     public GameObject parentObj = null;
+    public float bodyDistance = .0f;
+    public float bodyPointScale = .5f;
 
 
     // Use this for initialization
@@ -87,6 +89,7 @@ public class BodyView : MonoBehaviour {
     }
 
     public Material BoneMaterial;
+    public Material BodyPointMaterial;
     public GameObject BodyManager;
 
     private Dictionary<JointType, JointType> _BoneMap = new Dictionary<JointType, JointType>()
@@ -127,7 +130,7 @@ public class BodyView : MonoBehaviour {
         if (parentObj != null)
             body.transform.parent = parentObj.transform;
         //body.transform.localPosition = Vector3.zero;
-        body.transform.localPosition = new Vector3(.0f, .0f, 30.0f);
+        body.transform.localPosition = new Vector3(.0f, .0f, bodyDistance);
         body.transform.localRotation = Quaternion.identity;
 
 
@@ -140,9 +143,11 @@ public class BodyView : MonoBehaviour {
             //lr.material = BoneMaterial;
             //lr.SetWidth(0.05f, 0.05f);
 
-            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            jointObj.transform.localScale = new Vector3(bodyPointScale, bodyPointScale, bodyPointScale);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
+            BodyPointMaterial.color = Color.blue;
+            jointObj.GetComponent<Renderer>().material = BodyPointMaterial;
         }
 
         return body;
