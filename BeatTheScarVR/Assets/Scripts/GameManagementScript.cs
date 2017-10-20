@@ -14,6 +14,9 @@ public class GameManagementScript : MonoBehaviour{
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        m_dbInterface = new DatabaseInterface();
+        m_security = new Security(m_dbInterface);
     }
 
     void Start () {
@@ -21,8 +24,7 @@ public class GameManagementScript : MonoBehaviour{
         enterGame = false;
         isOpenMenu = false;
 
-        m_dbInterface = new DatabaseInterface();
-        m_security = new Security(m_dbInterface);
+        
         m_progComplete = m_dbInterface.programComplete();
 
         if (!m_progComplete)
@@ -72,15 +74,15 @@ public class GameManagementScript : MonoBehaviour{
 
     private void CheckOpenArcadeGameMenu()
     {
-        if (m_security.canFreePlay())
-        {
-            if (selectedArcade != "" && !m_security.isRestricted(selectedGameID))
+       // if (m_security.canFreePlay())
+        //{
+            if (selectedArcade != "")
             {
                 Debug.Log("CheckEnterGameScene() - " + selectedArcade);
                 if (selectedArcade == "Shooter Arcade")
                     agm.RequestOpenMenu();
             }
-        }
+       // }
     }
 
     private void CheckEnterGameScene()

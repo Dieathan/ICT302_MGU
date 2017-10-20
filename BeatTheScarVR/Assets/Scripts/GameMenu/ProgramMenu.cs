@@ -32,7 +32,7 @@ public class ProgramMenu : MonoBehaviour
     {
         if (!transform.gameObject.activeInHierarchy)
         {
-            MenuDisplayAdjustment();
+            //MenuDisplayAdjustment();
             transform.gameObject.SetActive(true);
         }
     }

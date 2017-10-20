@@ -1,2 +1,98 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: initializeCompiler
+Cmd: preprocess
+  insize=1459 outsize=702 ok=1
+Cmd: preprocess
+  insize=933 outsize=367 ok=1
+Cmd: preprocess
+  insize=2342 outsize=813 ok=1
+Cmd: preprocess
+  insize=1950 outsize=1127 ok=1
+Cmd: preprocess
+  insize=1153 outsize=448 ok=1
+Cmd: preprocess
+  insize=3189 outsize=1702 ok=1
+Cmd: preprocess
+  insize=1652 outsize=703 ok=1
+Cmd: preprocess
+  insize=2989 outsize=1724 ok=1
+Cmd: preprocess
+  insize=1907 outsize=1048 ok=1
+Cmd: disassembleShader
+  api=1 insize=1340 outsize=2186 ok=1
+Cmd: disassembleShader
+  api=1 insize=1456 outsize=2376 ok=1
+Cmd: disassembleShader
+  api=1 insize=2176 outsize=3479 ok=1
+Cmd: disassembleShader
+  api=1 insize=3772 outsize=7022 ok=1
+Cmd: disassembleShader
+  api=1 insize=4184 outsize=7683 ok=1
+Cmd: disassembleShader
+  api=1 insize=1160 outsize=1894 ok=1
+Cmd: disassembleShader
+  api=1 insize=1296 outsize=2084 ok=1
+Cmd: disassembleShader
+  api=4 insize=1670 outsize=3054 ok=1
+Cmd: disassembleShader
+  api=1 insize=1956 outsize=3433 ok=1
+Cmd: disassembleShader
+  api=1 insize=2132 outsize=3716 ok=1
+Cmd: disassembleShader
+  api=1 insize=1912 outsize=3371 ok=1
+Cmd: disassembleShader
+  api=1 insize=2960 outsize=5194 ok=1
+Cmd: disassembleShader
+  api=1 insize=2368 outsize=4236 ok=1
+Cmd: disassembleShader
+  api=1 insize=2796 outsize=5013 ok=1
+Cmd: disassembleShader
+  api=1 insize=2892 outsize=5155 ok=1
+Cmd: disassembleShader
+  api=1 insize=896 outsize=1475 ok=1
+Cmd: disassembleShader
+  api=1 insize=128 outsize=156 ok=1
+Cmd: disassembleShader
+  api=1 insize=1316 outsize=2141 ok=1
+Cmd: disassembleShader
+  api=1 insize=1100 outsize=1947 ok=1
+Cmd: disassembleShader
+  api=1 insize=1064 outsize=1876 ok=1
+Cmd: disassembleShader
+  api=4 insize=2618 outsize=4649 ok=1
+Cmd: disassembleShader
+  api=1 insize=1620 outsize=2668 ok=1
+Cmd: disassembleShader
+  api=4 insize=3050 outsize=4909 ok=1
+Cmd: disassembleShader
+  api=4 insize=2834 outsize=4628 ok=1
+Cmd: disassembleShader
+  api=1 insize=1444 outsize=2439 ok=1
+Cmd: disassembleShader
+  api=4 insize=7194 outsize=10188 ok=1
+Cmd: disassembleShader
+  api=1 insize=1124 outsize=1821 ok=1
+Cmd: disassembleShader
+  api=4 insize=1746 outsize=3143 ok=1
+Cmd: disassembleShader
+  api=1 insize=1296 outsize=2084 ok=1
+Cmd: disassembleShader
+  api=1 insize=1144 outsize=1852 ok=1
+Cmd: disassembleShader
+  api=1 insize=1308 outsize=2089 ok=1
+Cmd: disassembleShader
+  api=1 insize=1112 outsize=1809 ok=1
+Cmd: disassembleShader
+  api=4 insize=2202 outsize=3816 ok=1
+Cmd: disassembleShader
+  api=4 insize=4174 outsize=6100 ok=1
+Cmd: disassembleShader
+  api=4 insize=2030 outsize=3611 ok=1
+Cmd: disassembleShader
+  api=1 insize=920 outsize=1514 ok=1
+Cmd: disassembleShader
+  api=1 insize=140 outsize=175 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=2259 outsize=1186 kw=SOFTPARTICLES_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=2259 outsize=758 kw=SOFTPARTICLES_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME ok=1
