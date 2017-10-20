@@ -15389,6 +15389,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agm: {fileID: 217012604}
   pm: {fileID: 891735392}
+  gameMenu: {fileID: 1296943869}
+  ovrRecenterManager: {fileID: 1204360320}
 --- !u!1 &1820086513
 GameObject:
   m_ObjectHideFlags: 0

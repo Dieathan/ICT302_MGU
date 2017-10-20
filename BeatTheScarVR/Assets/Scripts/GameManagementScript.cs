@@ -8,6 +8,9 @@ public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
     public ArcadeGameMenu agm;
     public ProgramMenu pm;
+    public GameMenu gameMenu;
+    public OVRRecenterManagerScript ovrRecenterManager;
+
     void Awake()
     {
         if (instance == null)
@@ -30,6 +33,7 @@ public class GameManagementScript : MonoBehaviour{
         if (!m_progComplete)
         {
             GameDataHelper.setCurrentGame(m_dbInterface.getCurrentGame());
+            Debug.Log("godjsog");
         }
 
         m_gameList = m_dbInterface.getGameList();
@@ -54,7 +58,7 @@ public class GameManagementScript : MonoBehaviour{
 
     public void OVRCamRecenter()
     {
-        //OVRRecenterManagerScript.instance.RequestRecenter();
+        ovrRecenterManager.RequestRecenter();
     }
 
     public void QuitGame()
@@ -110,12 +114,12 @@ public class GameManagementScript : MonoBehaviour{
         {
             if (!isOpenMenu)
             {
-                //GameMenu.instance.RequestOpenMenu();
+                gameMenu.RequestOpenMenu();
                 isOpenMenu = true;
             }
             else
             {
-                //GameMenu.instance.RequestCloseMenu();
+                gameMenu.RequestCloseMenu();
                 isOpenMenu = false;
             }
         }
@@ -134,6 +138,7 @@ public class GameManagementScript : MonoBehaviour{
     public string gameInstanceDetails()
     {
         string gameTitle = "";
+        string difficulty = "";
 
         if(GameDataHelper.getCurrentGame().m_gameID == 1)
         {
@@ -144,9 +149,24 @@ public class GameManagementScript : MonoBehaviour{
             gameTitle = "Whack-A-Mole";
         }
 
+        switch(GameDataHelper.getCurrentGame().m_difficulty)
+        {
+            case 1:
+                difficulty = "Easy";
+                break;
+            case 2:
+                difficulty = "Medium";
+                break;
+            case 3:
+                difficulty = "Hard";
+                break;              
+        }
+
+            
+
         return "Game: " + gameTitle + "\n" + 
-               "Difficulty: " + GameDataHelper.getCurrentGame().m_difficulty + "\n" + 
-               "Duration: " + GameDataHelper.getCurrentGame().m_duration;
+               "Difficulty: " + difficulty + "\n" + 
+               "Duration: " + GameDataHelper.getCurrentGame().m_duration + " seconds";
     }
 
     public int getGameID(int x, int y, int z)
@@ -177,5 +197,5 @@ public class GameManagementScript : MonoBehaviour{
     private DatabaseInterface m_dbInterface;
     private Security m_security;
     private List<GameDataHelper.Game> m_gameList;
-    private bool m_progComplete = false;
+    private bool m_progComplete;
 }
