@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SihouetteGameManagement : MonoBehaviour {
     public BodyPointManagement bpm = null;
 
     GameDataHelper.GameInstance game;
     int playerScore = 0;
-    int time = 0;
+    float finishTime = 0;
     float wallSpeed = 0;
+    Time time;
     // UnityCoordX wallCoordX
     // UnityCoordY wallCoordY
     // UnityCoordZ wallCoordZ
+    GameObject scoreText;
+    GameObject timeText;
     AudioClip success;
     AudioClip fail;
     AudioSource audioSource;
@@ -38,6 +42,7 @@ public class SihouetteGameManagement : MonoBehaviour {
         }
         audioSource = GetComponent<AudioSource>();
 
+        finishTime = GameDataHelper.getCurrentGame().m_duration;
 
         GameObject wall01 = GameObject.Find("Wall01");
         wall01.transform.position =
@@ -61,7 +66,11 @@ public class SihouetteGameManagement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        updateTime();
+        if(finishTime <= 0)
+        {
+            //end game
+        }
     }
 
     public void RequestNewWall(string wallName)
@@ -97,6 +106,7 @@ public class SihouetteGameManagement : MonoBehaviour {
         if (check == true)
         {
             playerScore = playerScore + 100;
+            scoreText.GetComponent<Text>().text = "Score: " + playerScore;
             audioSource.PlayOneShot(success, 1.0f);
         }
         else
@@ -124,7 +134,10 @@ public class SihouetteGameManagement : MonoBehaviour {
         wallSpeed = 0.30f;
     }
 
-    
+    private void updateTime()
+    {
+        finishTime -= Time.time;
+    }
 
     
 }
