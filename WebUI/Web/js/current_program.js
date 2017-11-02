@@ -18,7 +18,7 @@ function ShowAllPorgrams() {
     }
 
 
-    var PorgramTable="<table align='center' border='2px'>"+
+    var PorgramTable="<table align='center' id='current_table' border='2px'>"+
                     "<tr>"+
                         "<td>"+
                         "<P>"+"Program ID"+"</P>"+

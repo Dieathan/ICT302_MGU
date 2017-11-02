@@ -32,7 +32,7 @@
 
     <tr>
         <td>
-            <button class="button1" onclick="CreateNewProgram()" >
+            <button class="button1" onclick="document.getElementById('new_program').style.display='block'" >
                 Add New Program</button>
 
         </td>
@@ -70,8 +70,8 @@
                 <form name="NewProgram" class="modal-content animate" action="">
 
                     <div class="container">
-                        <label><b>Program ID</b></label>
-                        <input type="text" placeholder="Enter Program ID" name="pid" required>
+                        <label><b>Program Name</b></label>
+                        <input type="text" placeholder="Enter Program Name" name="pn" required>
 
                     </div>
 
