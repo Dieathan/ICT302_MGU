@@ -5,24 +5,35 @@ using UnityEngine;
 public class BodyPointManagement : MonoBehaviour {
     public BodyView bodyViewObj = null;
     public LayerMask grabMask;
-    public WallManagement wm;
 
     // Use this for initialization
     void Start () {
-        
+        collideCount = 0;
+        isBodyDetected = false;
+        isBodyCollided = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (bodyViewObj.GetBodies() != null)
         {
+            isBodyDetected = true;
             CheckBodyCollision();
         }
+        else
+        {
+            isBodyDetected = false;
+        }
     }
+
+    public bool IsBodyCollided() { return isBodyCollided; }
+    public void ResetBodyCollided() { isBodyCollided = false; collideCount = 0; }
+    public bool IsBodyDetected() { return isBodyDetected; }
 
     private void CheckBodyCollision()
     {
         Dictionary<ulong, GameObject> bodiesObj = bodyViewObj.GetBodies();
+        
         foreach (KeyValuePair<ulong, GameObject> bodyObj in bodiesObj)
         {
             foreach (Transform child in bodyObj.Value.transform)
@@ -54,12 +65,25 @@ public class BodyPointManagement : MonoBehaviour {
 
                 if(hits.Length > 0)
                 {
-
-                    wm.CollideToWall();
+                    collideCount++;
                 }
             }
         }
 
+        if(collideCount > 0)
+        {
+            isBodyCollided = true;
+        }
+        else
+        {
+            isBodyCollided = false;
+        }
+
     }
+
+
+    private bool isBodyDetected;
     
+    private bool isBodyCollided;
+    private int collideCount;
 }

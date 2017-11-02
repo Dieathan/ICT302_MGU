@@ -4,24 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SihouetteGameManagement : MonoBehaviour {
-    public BodyPointManagement bpm = null;
+    public BodyPointManagement bpm;
+    public GameScoreScript gameScore;
+    public GameTimeScript gameTime;
 
-    GameDataHelper.GameInstance game;
-    int playerScore = 0;
-    float finishTime = 0;
-    float wallSpeed = 0;
-    Time time;
-    // UnityCoordX wallCoordX
-    // UnityCoordY wallCoordY
-    // UnityCoordZ wallCoordZ
-    GameObject scoreText;
-    GameObject timeText;
-    AudioClip success;
-    AudioClip fail;
-    AudioSource audioSource;
+    public bool isRandomWall;
+    public Transform[] walls;
     
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         game = GameDataHelper.getCurrentGame();
         //GameDataHelper.record();
@@ -40,104 +31,92 @@ public class SihouetteGameManagement : MonoBehaviour {
                 setMedium();
                 break;
         }
-        audioSource = GetComponent<AudioSource>();
 
-        finishTime = GameDataHelper.getCurrentGame().m_duration;
-
-        GameObject wall01 = GameObject.Find("Wall01");
-        wall01.transform.position =
-            new Vector3(
-                    30.0f,
-                    10.0f,
-                    -100.0f
-                );
-        wall01.GetComponent<WallManagement>().wallMoveSpd = wallSpeed;
-
-        GameObject wall02 = GameObject.Find("Wall02");
-        wall02.GetComponent<WallManagement>().isMove = false;
-        wall02.GetComponent<WallManagement>().wallMoveSpd = wallSpeed;
+        gameTime.SetTime(GameDataHelper.getCurrentGame().m_duration);
     }
 
     void OnDelete()
     {
-        GameDataHelper.AddMetricsToDatabase(playerScore, time);
+        GameDataHelper.AddMetricsToDatabase(gameScore.GetScore(), 
+            (int)(gameTime.GetTime()));
+    }
+
+    void Start()
+    {
+        nextWallIndex = 0;
+        if (walls.Length <= 1) isRandomWall = false;
+        // hide all walls first
+        foreach (Transform wall in walls)
+        {
+            wall.GetComponent<WallManagement>().RequestHideWall();
+        }
+        RequestNewWall();
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateTime();
-        if(finishTime <= 0)
+        //walls[0].GetComponent<WallManagement>().wallMoveSpd = .0f;
+        // start counting time
+        //gameTime.StartCountDown();
+        if (gameTime.IsFinish())
         {
             //end game
         }
     }
 
-    public void RequestNewWall(string wallName)
+    public void RequestNewWall()
     {
-        if (wallName == "Wall01")
+        if (isRandomWall)
         {
-            GameObject wall02 = GameObject.Find("Wall02");
-            wall02.transform.position =
-                new Vector3(
-                    30.0f,
-                    10.0f,
-                    -100.0f
-                );
-            wall02.GetComponent<WallManagement>().isMove = true;
-            bpm.wm = wall02.GetComponent<WallManagement>();
+            int i = (int)Random.Range(.0f, (float)(walls.Length-.1f));
+            walls[i].GetComponent<WallManagement>().RequestShowWall(wallSpeed);
         }
         else
         {
-            GameObject wall01 = GameObject.Find("Wall01");
-            wall01.transform.position =
-                new Vector3(
-                    30.0f,
-                    10.0f,
-                    -100.0f
-                );
-            wall01.GetComponent<WallManagement>().isMove = true;
-            bpm.wm = wall01.GetComponent<WallManagement>();
+            nextWallIndex += 1;
+            // array out of bound
+            if (nextWallIndex >= walls.Length) nextWallIndex = 0;
+            walls[nextWallIndex].GetComponent<WallManagement>().RequestShowWall(wallSpeed);
         }
     }
 
-    public void Score(bool check)
+    public void ScoreCheck(bool check)
     {
         if (check == true)
         {
-            playerScore = playerScore + 100;
-            scoreText.GetComponent<Text>().text = "Score: " + playerScore;
-            audioSource.PlayOneShot(success, 1.0f);
+            gameScore.AddScore(100);
+            gameScore.PlaySuccessSound();
+            RequestNewWall();
         }
         else
         {
-            audioSource.PlayOneShot(fail, 1.0f);
+            gameScore.PlayFailSound();
+            RequestNewWall();
         }
-        Debug.Log(playerScore);
     }
 
     private void setEasy()
     {
         // Set wall speed to a slow speed
-        wallSpeed = 0.10f;
+        wallSpeed = 0.2f;
     }
 
     private void setMedium()
     {
         // Set wall speed to a moderate speed
-        wallSpeed = 0.20f;
+        wallSpeed = 0.35f;
     }
 
     private void setHard()
     {
         // Set wall speed to a fast speed
-        wallSpeed = 0.30f;
+        wallSpeed = 0.5f;
     }
 
-    private void updateTime()
-    {
-        finishTime -= Time.time;
-    }
-
-    
+    private GameDataHelper.GameInstance game;
+    private float wallSpeed;
+    private Transform currentWall;
+    private int amountOfWalls;
+    private int nextWallIndex;
 }
