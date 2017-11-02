@@ -1,8 +1,7 @@
 
-
-
 function  CurrentProgram() {
     window.location.href = "CurrentProgram.html";
+<<<<<<< HEAD
 
 }
 
@@ -22,4 +21,6 @@ function CreateNewProgram() {
         }
 
 
+=======
+>>>>>>> 382cb223d0bca2f4c5846f7e46d1f7cf8c9790e4
 }

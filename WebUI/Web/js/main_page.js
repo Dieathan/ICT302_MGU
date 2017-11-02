@@ -1,4 +1,11 @@
+var modal = document.getElementById('id01');
 
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 function handleFiles()
 {
@@ -25,7 +32,9 @@ function handleFiles()
 function CreateNewPatient(pid,fn,ln,psw,sup)
 {
 
-    var SQL2 = "SELECT UserID FROM [USER] WHERE UserID='"+pid+"';";
+    var myDB = new ACCESSdb(FileN);
+
+    var SQL2 = "SELECT FirstName FROM [USER] WHERE UserID='"+pid+"';";
     var rsXML2 = myDB.query(SQL2, {xml:true});
 
     if(rsXML2)
@@ -49,7 +58,8 @@ function AccessCurrentPatient()
     //src = scripts[scripts.length-1].src;
     //alert(scripts);
     //var myDB = new ACCESSdb("C:\\Study/Murdoch/2017_S2/ICT302/ICT302_MGU/WebUI/Web/js/KinesisArcade.mdb");
-    var SQL = "SELECT UserID FROM [USER] WHERE UserID='"+pid+"';";
+    var myDB = new ACCESSdb(FileN);
+    var SQL = "SELECT FirstName FROM [USER] WHERE UserID='"+pid+"';";
     var rsXML = myDB.query(SQL, {xml:true});
 
     if(rsXML)
@@ -60,7 +70,12 @@ function AccessCurrentPatient()
     }
     else
     {
-        alert("No such patient! Try again!");
+        alert("No such patient! Try again!")
     }
+
+}
+
+function CreateDatabase()
+{
 
 }

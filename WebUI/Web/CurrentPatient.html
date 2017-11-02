@@ -7,12 +7,11 @@
     <script src="js/current_patient_page.js"></script>
     <script src="js/accessdb.js"></script>
     <script src="js/jquery.js"></script>
-    <script src="js/cookies.js"></script>
+    <script src="js/Cookies.js"></script>
     <script src="js/database_location.js"></script>
 </head>
 
 <body>
-
 
 <table id="current_table" align="center">
     <tr>
@@ -32,7 +31,11 @@
 
     <tr>
         <td>
+<<<<<<< HEAD
             <button class="button1" onclick="document.getElementById('new_program').style.display='block'" >
+=======
+            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+>>>>>>> 382cb223d0bca2f4c5846f7e46d1f7cf8c9790e4
                 Add New Program</button>
 
         </td>
@@ -56,15 +59,8 @@
 
 
     <tr>
-        <td align="right">
-            <a href="main.html" class="button1">Go Back</a>
-        </td>
-    </tr>
-</table>
-
-<table align="center">
-    <tr>
         <td>
+<<<<<<< HEAD
             <div id="new_program" class="modal">
 
                 <form name="NewProgram" class="modal-content animate" action="">
@@ -82,11 +78,12 @@
                 </form>
 
             </div>
+=======
+            <a href="main.html" class="button1">Go Back</a>
+>>>>>>> 382cb223d0bca2f4c5846f7e46d1f7cf8c9790e4
         </td>
     </tr>
 </table>
-
-
 
 <script>
     document.getElementById("CP").innerHTML="Current Patient ID: "+getCookie("pid");

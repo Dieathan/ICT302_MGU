@@ -142,6 +142,7 @@ public class DatabaseInterface
             if (!m_programGames.ElementAt(i).m_completed)
             {
                 m_currentGame = m_programGames.ElementAt(i);
+                GameDataHelper.setCurrentGame(m_programGames.ElementAt(i));
                 break;
             }
         }
@@ -179,6 +180,8 @@ public class DatabaseInterface
             }
             m_programGames.Add(game);
         }
+
+        setCurrentGame();
     }
 
     /**
@@ -276,6 +279,8 @@ public class DatabaseInterface
         gi.m_gameID = gid;
         gi.m_difficulty = difficulty;
         gi.m_duration = time;
+
+        GameDataHelper.setCurrentGame(gi);
 
         return gi;       
     }

@@ -159,19 +159,19 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_20-10_8.50/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/ICT302_MGU_02-11_9.00/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_20-10_8.50/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/ICT302_MGU_02-11_9.00/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_20-10_8.50/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/ICT302_MGU_02-11_9.00/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_20-10_8.50/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/ICT302_MGU_02-11_9.00/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_20-10_8.50/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>C:/Users/MGU/Documents/ICT302_MGU_02-11_9.00/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
