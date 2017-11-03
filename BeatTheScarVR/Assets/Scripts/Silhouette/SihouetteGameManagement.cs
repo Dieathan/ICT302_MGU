@@ -32,17 +32,18 @@ public class SihouetteGameManagement : MonoBehaviour {
                 break;
         }
 
-        gameTime.SetTime(GameDataHelper.getCurrentGame().m_duration);
+        //gameTime.SetTime(GameDataHelper.getCurrentGame().m_duration);
+        gameTime.SetTime(10.0f);
     }
 
     void OnDelete()
     {
-        GameDataHelper.AddMetricsToDatabase(gameScore.GetScore(), 
-            (int)(gameTime.GetTime()));
+        
     }
 
     void Start()
     {
+        gameTime.StartCountDown();
         nextWallIndex = 0;
         if (walls.Length <= 1) isRandomWall = false;
         // hide all walls first
@@ -56,13 +57,7 @@ public class SihouetteGameManagement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //walls[0].GetComponent<WallManagement>().wallMoveSpd = .0f;
-        // start counting time
-        //gameTime.StartCountDown();
-        if (gameTime.IsFinish())
-        {
-            //end game
-        }
+        
     }
 
     public void RequestNewWall()
@@ -94,6 +89,14 @@ public class SihouetteGameManagement : MonoBehaviour {
             gameScore.PlayFailSound();
             RequestNewWall();
         }
+    }
+
+    public void GameFinish()
+    {
+        
+        // parsing data to db
+        //GameDataHelper.AddMetricsToDatabase(gameScore.GetScore(),
+        //    (int)(gameTime.GetTime()));
     }
 
     private void setEasy()

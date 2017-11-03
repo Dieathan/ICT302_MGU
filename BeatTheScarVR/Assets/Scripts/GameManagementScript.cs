@@ -41,6 +41,7 @@ public class GameManagementScript : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("fdsaf");
         CheckEnterGameScene();
         CheckOpenMenu();
         CheckOpenArcadeGameMenu();
@@ -110,6 +111,7 @@ public class GameManagementScript : MonoBehaviour{
 
     private void CheckOpenMenu()
     {
+        
         if (OVRInput.GetDown(OVRInput.Button.Start))
         {
             if (!isOpenMenu)
