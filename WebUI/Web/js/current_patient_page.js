@@ -26,3 +26,24 @@ function CreateNewProgram() {
 function CurrentFeedBacks() {
     window.location.href = "Feedbacks.html";
 }
+
+function CreateRestriction() {
+
+    var re = 0;
+    var gid = document.forms["NewRestriction"]["gid"].value;
+
+    if (document.forms["NewRestriction"]["restriction"].checked) {
+        var re = document.forms["NewRestriction"]["restriction"].value;
+    }
+
+    var myDB = new ACCESSdb(FileN);
+    //alert("New Program created!");
+
+    var SQL = "INSERT INTO [RESTRICTION](UserID,GameID,IsRestricted) VALUES('" + getCookie("pid") + "'," + gid + "," + re + ");";
+    var rsXML = myDB.query(SQL, { xml: true });
+
+    if (!rsXML) {
+        alert("Set!");
+    }
+
+}

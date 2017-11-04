@@ -2,7 +2,8 @@
 
     var myDB = new ACCESSdb(FileN);
     var SQL;
-    //alert(getCookie("pid"));
+
+
     var gameID, score, timePlayed, video, i, txt, feedback;
 
     SQL = "SELECT GameID FROM [PATIENTDATA] WHERE UserID='" + getCookie("pid") + "';";
@@ -43,7 +44,7 @@
     }
 
 
-    var FeedbacksTable = "<table align='center' id='current_table' border='2px'>" +
+    var FeedbacksTable = "<table align='center' id='current_table' >" +
                     "<tr>" +
                         "<td>" +
                         "<P>" + "Game ID" + "</P>" +

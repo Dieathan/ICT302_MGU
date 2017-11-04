@@ -26,22 +26,18 @@
 }
 
 #current_table {
-    background-color: #daf7ff;
+    background-color: #07335a;
     position: relative;
-    top: 265px;
-
+    top: 200px;
     text-align: center;
     font-style: normal;
     font-size: 20px;
-    padding:5px;
-}
-
-#current_table,tr,td{
-    padding-top:2px;
-    padding-bottom:2px;
     padding-left:10px;
     padding-right:10px;
+    border:5px;
+    color:white;
 }
+
 
 .button1{
     background-color: #bacfec;
@@ -52,4 +48,21 @@
 }
 .button1:hover{
     background-color:#446694;
+}
+
+#infor_table {
+    position: relative;
+    top:180px;
+    width: 680px;
+    text-align: left;
+    font-style: normal;
+    padding: 0px;
+}
+#infor_table,tr,td{
+    padding: 0px;
+}
+
+.CP{
+    font-size: 16px;
+    color: #fefefe;
 }
