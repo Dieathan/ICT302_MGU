@@ -8,9 +8,13 @@ public class GameTimeScript : MonoBehaviour {
     float time = 60.0f;
     bool isCountDown;
 
+    void Awake()
+    {
+        isCountDown = false;
+    }
+
     // Use this for initialization
     void Start () {
-        isCountDown = false;
 	}
 	
 	// Update is called once per frame
@@ -21,8 +25,12 @@ public class GameTimeScript : MonoBehaviour {
             time -= Time.deltaTime;
             if(time <= .0f)
             {
+                // reset everything
                 time = .0f;
                 isCountDown = false;
+
+                // signal the game management that game is finished
+                sgm.GameFinish();
             }
         }
     }
