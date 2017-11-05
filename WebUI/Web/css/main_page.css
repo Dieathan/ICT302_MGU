@@ -43,18 +43,31 @@ body {
 
 #current_table {
     background-color: #07335a;
-    position: relative;
-    top: 265px;
+    position:relative;
+    top:185px;
     width: 680px;
     height: 280px;
     text-align: center;
     font-style: normal;
     font-size: 10px;
     padding: 1px;
+
 }
 
 #current_table,tr,td{
     padding: 7px;
+}
+
+#infor_table {
+    position: relative;
+    top:180px;
+    width: 680px;
+    text-align: left;
+    font-style: normal;
+    padding: 0px;
+}
+#infor_table,tr,td{
+    padding: 0px;
 }
 
 .button1{

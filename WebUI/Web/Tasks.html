@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Feedbacks</title>
-    <link rel="stylesheet" type="text/css" href="css/feedback.css">
-    <script src="js/feedback.js"></script>
+    <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" href="css/tasks.css">
+    <script src="js/task.js"></script>
     <script src="js/UserInfor.js"></script>
     <script src="js/accessdb.js"></script>
     <script src="js/jquery.js"></script>
@@ -12,31 +11,25 @@
     <script src="js/database_location.js"></script>
 </head>
 <body>
-
     <div id="user_infor"></div>
+    <div id="show_tasks"></div>
 
-
-
-    <div id="show_feedback"></div>
-
-    <table id="current_table" align="center">
+    <table id="task_table" align="center">
         <tr>
             <td>
-                <a align="center" href="CurrentPatient.html" class="button1">Go Back</a>
-
+                <a align="center" href="CurrentProgram.html" class="button1">Go Back</a>
             </td>
         </tr>
     </table>
 
 
-
     <script>
-
+        ShowAllTask();
         ShowUserInfor();
-        ShowAllFeedbacks();
+        
     </script>
 
+
+
 </body>
-
-
 </html>

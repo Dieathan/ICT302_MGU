@@ -1,1 +1,1 @@
-var FileN = "C:\\Users\\MGU\\Documents\\ICT302_MGU_03-11_9.23\\KinesisArcade.mdb";
+var FileN = "C:\\Study\\Murdoch\\2017_S2\\ICT302\\ICT302_MGU\\KinesisArcade.mdb";

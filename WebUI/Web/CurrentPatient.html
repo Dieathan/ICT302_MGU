@@ -5,21 +5,18 @@
     <title>current patient page</title>
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
     <script src="js/current_patient_page.js"></script>
+    <script src="js/UserInfor.js"></script>
     <script src="js/accessdb.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/Cookies.js"></script>
     <script src="js/database_location.js"></script>
 </head>
 
-<body>
+<body >
 
-    <table id="current_table" align="center">
-        <tr>
-            <td>
-                <div><p class="CP" id="CP"></p></div>
+    <div id="user_infor"></div>
 
-            </td>
-        </tr>
+    <table id="current_table"  align="center" style="display:none" >
 
         <tr>
             <td>
@@ -51,7 +48,7 @@
 
         <tr>
             <td>
-                <button class="button1" onclick="document.getElementById('id01').style.display='block'">
+                <button class="button1" onclick="document.getElementById('new_restriction').style.display = 'block'">
                     Game Restrictions
                 </button>
 
@@ -89,14 +86,34 @@
 
                 </div>
 
+                <div id="new_restriction" class="modal">
+
+                    <form name="NewRestriction" class="modal-content animate" action="">
+
+                        <div class="container">
+                            <label><b>Game ID:</b></label>
+                            <input type="text" placeholder="Enter Game ID" name="gid" required>
+
+                            <input type="checkbox" name="restriction" value=1>Restriction<br>
+
+                        </div>
+
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" onclick="CreateRestriction()" class="createbtn">Create</button>
+                            <button type="button" onclick="document.getElementById('new_restriction').style.display = 'none'" class="cancelbtn">Cancel</button>
+                        </div>
+                    </form>
+
+                </div>
+
             </td>
         </tr>
-        
+
     </table>
 
-<script>
-    document.getElementById("CP").innerHTML="Current Patient ID: "+getCookie("pid");
-</script>
+    <script>
+        ShowUserInfor();
+    </script>
 
 </body>
 
