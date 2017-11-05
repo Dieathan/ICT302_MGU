@@ -363,10 +363,10 @@ MonoBehaviour:
     width: 313
     height: 605
   m_TreeViewState:
-    scrollPos: {x: 0, y: 132}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 62f2ffff18fcffff000000007c340000ee360000
+    m_ExpandedIDs: 18fcffff0000000018380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -421,9 +421,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 78.93395, y: 20.54448, z: -91.132614}
+    m_Target: {x: 55.63019, y: 22.671741, z: -96.387054}
     speed: 2
-    m_Value: {x: 78.93395, y: 20.54448, z: -91.132614}
+    m_Value: {x: 55.63019, y: 22.671741, z: -96.387054}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -446,13 +446,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.03762789, y: 0.68291837, z: 0.035274807, w: 0.72867167}
+    m_Target: {x: -0.035755098, y: 0.6991926, z: 0.0350637, w: 0.7131773}
     speed: 2
-    m_Value: {x: -0.03762789, y: 0.68291837, z: 0.035274807, w: 0.72867167}
+    m_Value: {x: -0.035755098, y: 0.6991926, z: 0.0350637, w: 0.7131773}
   m_Size:
-    m_Target: 131.99434
+    m_Target: 115.82526
     speed: 2
-    m_Value: 131.99434
+    m_Value: 115.82526
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -501,19 +501,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Objects/SihouetteGame/Tree
+    - Assets/Objects/SihouetteGame/Walls
   m_ViewMode: 1
   m_StartGridSize: 61
   m_LastFolders:
-  - Assets/Objects/SihouetteGame/Tree
+  - Assets/Objects/SihouetteGame/Walls
   m_LastFoldersGridSize: 61
   m_LastProjectPath: C:\Australia_mengjiao\2017_S2\ICT302\FinalProject\BeatTheScarVR
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 28.68132}
-    m_SelectedIDs: 5c2f0000
-    m_LastClickedID: 12124
-    m_ExpandedIDs: 000000000829000096290000be2c0000162f0000662f0000b42f0000283200008a320000c2390000c4390000c6390000c8390000ca390000ee39000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 148.68132}
+    m_SelectedIDs: 32320000
+    m_LastClickedID: 12850
+    m_ExpandedIDs: 00000000082900008629000098290000c02c0000182f0000682f0000b62f00002c3200008e320000cc390000ce390000d0390000d2390000d439000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000829000096290000be2c0000162f0000662f0000b42f0000283200008a320000c2390000c4390000c6390000c8390000ca390000
+    m_ExpandedIDs: 00000000082900008629000098290000c02c0000182f0000682f0000b62f00002c3200008e320000cc390000ce390000d0390000d2390000d4390000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
