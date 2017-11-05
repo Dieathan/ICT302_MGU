@@ -5,7 +5,8 @@
     var SQL;
 
 
-    var gameID, dif, dur, com, i, txt, tasks;
+    var gameID, dif, dur, com, i, txt;
+    var tasks = "";
 
     SQL = "SELECT GameID FROM [GAMEINSTANCE] WHERE ProgramID=" + getCookie("prid") + ";";
     var gameIDXML = myDB.query(SQL, { xml: true });

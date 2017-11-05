@@ -4,7 +4,9 @@
     var SQL;
 
 
-    var gameID, score, timePlayed, video, i, txt, feedback;
+    var gameID, score, timePlayed, video, i, txt;
+
+    var feedback = "";
 
     SQL = "SELECT GameID FROM [PATIENTDATA] WHERE UserID='" + getCookie("pid") + "';";
     var gameIDXML = myDB.query(SQL, { xml: true });

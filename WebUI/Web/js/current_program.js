@@ -3,7 +3,8 @@ function ShowAllPorgrams() {
     var myDB = new ACCESSdb(FileN);
     var pidXML, pnXML, ptXML, prid, pn, pt;
     var SQL
-    var x, i, txt, programs;
+    var x, i, txt;
+    var programs = "";
 
     SQL = "SELECT ProgramID FROM [PROGRAM] WHERE UserID='"+getCookie("pid")+"';";
     pidXML = myDB.query(SQL, { xml: true });
@@ -33,11 +34,11 @@ function ShowAllPorgrams() {
                      "<p>" + pt[i].childNodes[0].nodeValue + "</p>" +
                  "</td>" +
                  "<td>" +
-                     "<p><button class='button2' onclick='NewTaskWindow(" + prid[i].childNodes[0].nodeValue + ")'>" +
+                     "<p><button class='button3' onclick='NewTaskWindow(" + prid[i].childNodes[0].nodeValue + ")'>" +
                     "New Task</button>" +
-                    "<button class='button2' onclick='EditTask(" + prid[i].childNodes[0].nodeValue + ")'>" +
+                    "<button class='button3' onclick='EditTask(" + prid[i].childNodes[0].nodeValue + ")'>" +
                     "Edit Task</button>" +
-                    "<button class='button2' onclick='DeleteProgram(" + prid[i].childNodes[0].nodeValue + ")'>" +
+                    "<button class='button3' onclick='DeleteProgram(" + prid[i].childNodes[0].nodeValue + ")'>" +
                     "Delete Program</button></p>" +
                  "</td>" +
              "</tr>";
