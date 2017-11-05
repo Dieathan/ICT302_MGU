@@ -1,119 +1,93 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>current patient page</title>
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
     <script src="js/current_patient_page.js"></script>
-    <script src="js/UserInfor.js"></script>
     <script src="js/accessdb.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/Cookies.js"></script>
     <script src="js/database_location.js"></script>
 </head>
 
-<body >
+<body>
 
-    <div id="user_infor"></div>
+<table id="current_table" align="center">
+    <tr>
+        <td>
+            <div><p class="CP" id="CP"></p></div>
 
-    <table id="current_table"  align="center" style="display:none" >
+        </td>
+    </tr>
 
-        <tr>
-            <td>
-                <button class="button1" onclick="CurrentProgram()">
-                    View Current Program
-                </button>
+    <tr>
+        <td>
+            <button class="button1" onclick="CurrentProgram()" >
+                View Current Program</button>
 
-            </td>
-        </tr>
+        </td>
+    </tr>
 
-        <tr>
-            <td>
+    <tr>
+        <td>
+<<<<<<< HEAD
+            <button class="button1" onclick="document.getElementById('new_program').style.display='block'" >
+=======
+            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+>>>>>>> 382cb223d0bca2f4c5846f7e46d1f7cf8c9790e4
+                Add New Program</button>
 
-                <button class="button1" onclick="document.getElementById('new_program').style.display='block'">
-                    Add New Program
-                </button>
+        </td>
+    </tr>
 
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+                Feedback</button>
 
-        <tr>
-            <td>
-                <button class="button1" onclick="CurrentFeedBacks()">
-                    Feedback
-                </button>
+        </td>
+    </tr>
 
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <button class="button1" onclick="document.getElementById('id01').style.display='block'" >
+                Game Restrictions</button>
 
-        <tr>
-            <td>
-                <button class="button1" onclick="document.getElementById('new_restriction').style.display = 'block'">
-                    Game Restrictions
-                </button>
+        </td>
+    </tr>
 
 
+    <tr>
+        <td>
+<<<<<<< HEAD
+            <div id="new_program" class="modal">
 
-            </td>
-        </tr>
+                <form name="NewProgram" class="modal-content animate" action="">
 
-        <tr>
-            <td>
-                <a align="center" href="main.html" class="button1">Go Back</a>
+                    <div class="container">
+                        <label><b>Program Name</b></label>
+                        <input type="text" placeholder="Enter Program Name" name="pn" required>
 
-            </td>
-        </tr>
-    </table>
+                    </div>
 
-    <table align="center">
-        <tr>
-            <td>
-                <div id="new_program" class="modal">
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" onclick="CreateNewProgram()" class="createbtn">Create</button>
+                        <button type="button" onclick="document.getElementById('new_program').style.display='none'" class="cancelbtn">Cancel</button>
+                    </div>
+                </form>
 
-                    <form name="NewProgram" class="modal-content animate" action="">
+            </div>
+=======
+            <a href="main.html" class="button1">Go Back</a>
+>>>>>>> 382cb223d0bca2f4c5846f7e46d1f7cf8c9790e4
+        </td>
+    </tr>
+</table>
 
-                        <div class="container">
-                            <label><b>Program Name</b></label>
-                            <input type="text" placeholder="Enter Program Name" name="pn" required>
-
-                        </div>
-
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="CreateNewProgram()" class="createbtn">Create</button>
-                            <button type="button" onclick="document.getElementById('new_program').style.display='none'" class="cancelbtn">Cancel</button>
-                        </div>
-                    </form>
-
-                </div>
-
-                <div id="new_restriction" class="modal">
-
-                    <form name="NewRestriction" class="modal-content animate" action="">
-
-                        <div class="container">
-                            <label><b>Game ID:</b></label>
-                            <input type="text" placeholder="Enter Game ID" name="gid" required>
-
-                            <input type="checkbox" name="restriction" value=1>Restriction<br>
-
-                        </div>
-
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="CreateRestriction()" class="createbtn">Create</button>
-                            <button type="button" onclick="document.getElementById('new_restriction').style.display = 'none'" class="cancelbtn">Cancel</button>
-                        </div>
-                    </form>
-
-                </div>
-
-            </td>
-        </tr>
-
-    </table>
-
-    <script>
-        ShowUserInfor();
-    </script>
+<script>
+    document.getElementById("CP").innerHTML="Current Patient ID: "+getCookie("pid");
+</script>
 
 </body>
 
