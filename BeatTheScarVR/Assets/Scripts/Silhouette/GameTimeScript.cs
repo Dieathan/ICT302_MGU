@@ -42,4 +42,6 @@ public class GameTimeScript : MonoBehaviour {
     public void StartCountDown() { isCountDown = true; }
 
     public bool IsFinish() { return (time <= .0f); }
+
+    public void StopCountDown() { isCountDown = false; }
 }

@@ -7,6 +7,7 @@ public class SihouetteGameManagement : MonoBehaviour {
     public BodyPointManagement bpm;
     public GameScoreScript gameScore;
     public GameTimeScript gameTime;
+    public PauseMenu pauseMenu;
 
     public bool isRandomWall;
     public Transform[] walls;
@@ -44,6 +45,7 @@ public class SihouetteGameManagement : MonoBehaviour {
     void Start()
     {
         gameTime.StartCountDown();
+        isOpenMenu = false;
         nextWallIndex = 0;
         if (walls.Length <= 1) isRandomWall = false;
         // hide all walls first
@@ -57,7 +59,7 @@ public class SihouetteGameManagement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        CheckOpenMenu();
     }
 
     public void RequestNewWall()
@@ -99,27 +101,65 @@ public class SihouetteGameManagement : MonoBehaviour {
         //    (int)(gameTime.GetTime()));
     }
 
+    private void CheckOpenMenu()
+    {
+
+        if (OVRInput.GetDown(OVRInput.Button.Start))
+        {
+            if (!isOpenMenu)
+            {
+                pauseMenu.RequestOpenMenu();
+                isOpenMenu = true;             
+            }
+            else
+            {
+                pauseMenu.RequestCloseMenu();
+                isOpenMenu = false;
+            }
+            PauseGame(isOpenMenu);
+        }
+    }
+
+    private void PauseGame(bool pause)
+    {
+        if(pause)
+        {
+            wallSpeed = 0.0f;
+            gameTime.StopCountDown();
+        }
+        else
+        {
+            wallSpeed = oldWallSpeed;
+            gameTime.StartCountDown();
+        }
+    }
+
     private void setEasy()
     {
         // Set wall speed to a slow speed
         wallSpeed = 0.2f;
+        oldWallSpeed = 0.2f;
     }
 
     private void setMedium()
     {
         // Set wall speed to a moderate speed
         wallSpeed = 0.35f;
+        oldWallSpeed = 0.35f;
     }
 
     private void setHard()
     {
         // Set wall speed to a fast speed
         wallSpeed = 0.5f;
+        oldWallSpeed = 0.5f;
     }
 
     private GameDataHelper.GameInstance game;
     private float wallSpeed;
+    private float oldWallSpeed;
     private Transform currentWall;
     private int amountOfWalls;
     private int nextWallIndex;
+    private bool isOpenMenu;
 }

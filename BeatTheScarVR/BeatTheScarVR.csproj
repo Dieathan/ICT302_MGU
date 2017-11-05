@@ -310,6 +310,7 @@
     <Compile Include="Assets\Scripts\Silhouette\GameScoreScript.cs" />
     <Compile Include="Assets\Scripts\Silhouette\GameTimeScript.cs" />
     <Compile Include="Assets\Scripts\Silhouette\Menu\EnterMenu.cs" />
+    <Compile Include="Assets\Scripts\Silhouette\Menu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Silhouette\SihouetteGameManagement.cs" />
     <Compile Include="Assets\Scripts\Silhouette\WallManagement.cs" />
   </ItemGroup>
