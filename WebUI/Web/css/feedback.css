@@ -1,0 +1,55 @@
+﻿body {
+    background-image: url("../res/images/feedback.jpg");
+    background-repeat: no-repeat;
+    background-position:top;
+    background-color: #081420;
+    -webkit-animation-name: BGC; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: BGC;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    margin: 0;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes BGC {
+    0%{background-color: #081420;}
+    50% {background-color: #07335a;}
+    100%{background-color: #081420;}
+}
+
+/* Standard syntax */
+@keyframes BGC {
+    0%{background-color: #081420;}
+    50% {background-color: #07335a;}
+    100%{background-color: #081420;}
+}
+
+#current_table {
+    background-color: #daf7ff;
+    position: relative;
+    top: 265px;
+
+    text-align: center;
+    font-style: normal;
+    font-size: 20px;
+    padding:5px;
+}
+
+#current_table,tr,td{
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.button1{
+    background-color: #bacfec;
+    width: 180px;
+    font-size: 15px;
+    padding: 5px;
+    border: 2px solid #446694;
+}
+.button1:hover{
+    background-color:#446694;
+}
