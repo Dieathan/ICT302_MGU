@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeatTheScarVR.Plugins", "BeatTheScarVR.Plugins.csproj", "{4617827B-EE2E-A502-C08B-A5D7EF09B259}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeatTheScarVR", "BeatTheScarVR.csproj", "{9553B612-7E5E-32A6-E821-82BABB0D4CE2}"
