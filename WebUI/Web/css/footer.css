@@ -1,0 +1,13 @@
+﻿footer {
+  position:absolute;
+  width:720px;
+  height:100px;
+  bottom:1%;
+  left:20%;
+  right:80%;
+  background-image:url("../res/images/footer.png");
+  background-repeat:no-repeat;
+  background-position:center;
+  text-align: center;
+
+}
