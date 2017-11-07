@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SihouetteGameManagement : MonoBehaviour {
     public BodyPointManagement bpm;
@@ -67,11 +68,13 @@ public class SihouetteGameManagement : MonoBehaviour {
         if (isRandomWall)
         {
             int i = (int)Random.Range(.0f, (float)(walls.Length-.1f));
+            currentWallIndex = i;
             walls[i].GetComponent<WallManagement>().RequestShowWall(wallSpeed);
         }
         else
         {
             nextWallIndex += 1;
+            currentWallIndex = nextWallIndex;
             // array out of bound
             if (nextWallIndex >= walls.Length) nextWallIndex = 0;
             walls[nextWallIndex].GetComponent<WallManagement>().RequestShowWall(wallSpeed);
@@ -101,6 +104,34 @@ public class SihouetteGameManagement : MonoBehaviour {
         //    (int)(gameTime.GetTime()));
     }
 
+    public void SetIsOpenMenu(bool val)
+    {
+        isOpenMenu = val;
+    }
+
+    public bool GetIsOpenMenu()
+    {
+        return isOpenMenu;
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("Arcade");
+    }
+
+    private void CheckRestartGameScene()
+    {
+        if (restartGame)
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
+
+    public void SetRestartGame()
+    {
+        restartGame = true;
+    }
+
     private void CheckOpenMenu()
     {
 
@@ -124,12 +155,13 @@ public class SihouetteGameManagement : MonoBehaviour {
     {
         if(pause)
         {
-            wallSpeed = 0.0f;
+            walls[currentWallIndex].GetComponent<WallManagement>().SetWallSpeed(0.0f);
             gameTime.StopCountDown();
+            Debug.Log("I'm here");
         }
         else
         {
-            wallSpeed = oldWallSpeed;
+            walls[currentWallIndex].GetComponent<WallManagement>().SetWallSpeed(oldWallSpeed);
             gameTime.StartCountDown();
         }
     }
@@ -162,4 +194,6 @@ public class SihouetteGameManagement : MonoBehaviour {
     private int amountOfWalls;
     private int nextWallIndex;
     private bool isOpenMenu;
+    private bool restartGame;
+    private int currentWallIndex;
 }

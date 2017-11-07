@@ -30,6 +30,11 @@ public class WallManagement : MonoBehaviour {
         wallMoveSpd = spd;
     }
 
+    public void SetWallSpeed(float spd)
+    {
+        wallMoveSpd = spd;
+    }
+
     private void WallMovementUpdate()
     {
         // Come close to the player

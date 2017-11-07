@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour {
     {
         transform.localPosition = player.localPosition + cameraCentre.forward * distance;
         Vector3 reversePlayerRotation = new Vector3(-(player.localRotation.eulerAngles.x / 2),
-            -(player.localRotation.eulerAngles.y / 2),
+            -(player.localRotation.eulerAngles.y / 2 - 90),
             -(player.localRotation.eulerAngles.z / 2));
         transform.localRotation = cameraCentre.localRotation * Quaternion.Euler(reversePlayerRotation);
     }
