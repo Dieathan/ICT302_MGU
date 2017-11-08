@@ -44,10 +44,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>X:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>X:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -302,40 +302,40 @@
      <None Include="Assets\OVR\LICENSE.txt" />
      <None Include="Assets\OVR\Plugins\placeholder.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>X:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_06-11-726/ICT302_MGU/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/ICT302_MGU/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.dll</HintPath>
  </Reference>
  <Reference Include="AForge.Video.VFW">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_06-11-726/ICT302_MGU/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/ICT302_MGU/BeatTheScarVR/Assets/Plugins/AForge/AForge.Video.VFW.dll</HintPath>
  </Reference>
  <Reference Include="System.Drawing">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_06-11-726/ICT302_MGU/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/ICT302_MGU/BeatTheScarVR/Assets/Plugins/AForge/System.Drawing.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_06-11-726/ICT302_MGU/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/ICT302_MGU/BeatTheScarVR/Assets/Plugins/Database libraries/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/MGU/Documents/ICT302_MGU_06-11-726/ICT302_MGU/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
+ <HintPath>X:/Study/Uni/Yr3_S2/ICT302 - FYP/Program/ICT302_MGU/BeatTheScarVR/Assets/Plugins/Database libraries/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

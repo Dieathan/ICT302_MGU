@@ -74,9 +74,9 @@ public class SihouetteGameManagement : MonoBehaviour {
         else
         {
             nextWallIndex += 1;
-            currentWallIndex = nextWallIndex;
             // array out of bound
             if (nextWallIndex >= walls.Length) nextWallIndex = 0;
+            currentWallIndex = nextWallIndex;
             walls[nextWallIndex].GetComponent<WallManagement>().RequestShowWall(wallSpeed);
         }
     }
@@ -119,17 +119,9 @@ public class SihouetteGameManagement : MonoBehaviour {
         SceneManager.LoadScene("Arcade");
     }
 
-    private void CheckRestartGameScene()
+    public void CheckRestartGameScene()
     {
-        if (restartGame)
-        {
-            SceneManager.LoadScene("Game");
-        }
-    }
-
-    public void SetRestartGame()
-    {
-        restartGame = true;
+        SceneManager.LoadScene("Game");
     }
 
     private void CheckOpenMenu()
@@ -157,7 +149,6 @@ public class SihouetteGameManagement : MonoBehaviour {
         {
             walls[currentWallIndex].GetComponent<WallManagement>().SetWallSpeed(0.0f);
             gameTime.StopCountDown();
-            Debug.Log("I'm here");
         }
         else
         {
@@ -194,6 +185,5 @@ public class SihouetteGameManagement : MonoBehaviour {
     private int amountOfWalls;
     private int nextWallIndex;
     private bool isOpenMenu;
-    private bool restartGame;
     private int currentWallIndex;
 }
