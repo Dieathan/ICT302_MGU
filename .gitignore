@@ -26,7 +26,6 @@
 *.lib
 
 # Executables
-*.exe
 *.out
 *.app
 BeatTheScarVR/Library/ScriptAssemblies/Assembly-UnityScript.dll.mdb
