@@ -29,7 +29,6 @@
     background-color: #07335a;
     position: relative;
     width:720px;
-    top: 180px;
     text-align: center;
     font-style: normal;
     font-size: 20px;
@@ -67,4 +66,36 @@
 .CP{
     font-size: 16px;
     color: #fefefe;
+}
+
+.button_goback{
+    position: absolute;
+    background-color: #bacfec;
+    width: 60px;
+    height: 15px;
+    font-size: 15px;
+    padding: 5px;
+    margin: auto;
+    top: 80%; left: 0; bottom: 0; right: 100px; 
+    border: 2px solid #446694;
+    text-align:center;
+}
+.button_goback:hover{
+    background-color:#446694;
+}
+
+.help_button{
+    position: absolute;
+    background-color: #bacfec;
+    width: 60px;
+    height: 15px;
+    font-size: 15px;
+    padding: 5px;
+    margin: auto;
+    top: 80%; left: 100px; bottom: 0; right: 0; 
+    border: 2px solid #446694;
+    text-align:center;
+}
+.help_button:hover{
+    background-color:#446694;
 }

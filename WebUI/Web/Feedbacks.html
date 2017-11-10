@@ -5,6 +5,7 @@
     <title>Feedbacks</title>
     <link rel="stylesheet" type="text/css" href="css/feedback.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/scroll_window.css">
     <script src="js/feedback.js"></script>
     <script src="js/UserInfor.js"></script>
     <script src="js/accessdb.js"></script>
@@ -16,25 +17,19 @@
 
     <div id="user_infor"></div>
 
+    <div id="show_feedback" class="scroll"></div>
 
-
-    <div id="show_feedback"></div>
-
-    <table id="current_table" align="center">
-        <tr>
-            <td>
-                <a align="center" href="CurrentPatient.html" class="button1">Go Back</a>
-
-            </td>
-        </tr>
-    </table>
-
+    
+    <div>
+        <a align="center" class="button_goback" href="CurrentPatient.html">Go Back</a>
+        <a align="center" class="help_button" href="HelpPage.html">Help</a>
+    </div>   
 
 
     <script>
-
-        ShowUserInfor();
         ShowAllFeedbacks();
+        ShowUserInfor();
+        
     </script>
 
 

@@ -46,7 +46,7 @@
     }
 
 
-    var FeedbacksTable = "<table align='center' id='current_table' border='2px'>" +
+    var FeedbacksTable = "<table align='center' id='feedback_table' border='2px'>" +
                     "<tr>" +
                         "<td>" +
                         "<P>" + "Game ID" + "</P>" +

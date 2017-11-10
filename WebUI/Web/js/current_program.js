@@ -37,7 +37,7 @@ function ShowAllPorgrams() {
                      "<p><button class='button3' onclick='NewTaskWindow(" + prid[i].childNodes[0].nodeValue + ")'>" +
                     "New Task</button>" +
                     "<button class='button3' onclick='EditTask(" + prid[i].childNodes[0].nodeValue + ")'>" +
-                    "Edit Task</button>" +
+                    "List Task</button>" +
                     "<button class='button3' onclick='DeleteProgram(" + prid[i].childNodes[0].nodeValue + ")'>" +
                     "Delete Program</button></p>" +
                  "</td>" +

@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url("../res/images/feedback.jpg");
+    background-image: url("../res/images/help.jpg");
     background-repeat: no-repeat;
     background-position:top;
     background-color: #081420;
@@ -25,30 +25,27 @@
     100%{background-color: #081420;}
 }
 
-#feedback_table {
+#task_table {
     background-color: #07335a;
     position: relative;
     width:720px;
     text-align: center;
     font-style: normal;
     font-size: 20px;
-    padding:10px;
     border:5px;
     color:white;
 }
 
+#task_table,td{
+    padding: 7px;
+}
 
 .button1{
-    position: absolute;
     background-color: #bacfec;
-    width: 100px;
-    height: 20px;
+    width: 180px;
     font-size: 15px;
     padding: 5px;
-    margin: auto;
-    top: 80%; left: 0; bottom: 0; right: 0; 
     border: 2px solid #446694;
-    text-align:center;
 }
 .button1:hover{
     background-color:#446694;
@@ -74,33 +71,15 @@
 .button_goback{
     position: absolute;
     background-color: #bacfec;
-    width: 60px;
-    height: 15px;
+    width: 80px;
+    height: 30px;
     font-size: 15px;
     padding: 5px;
     margin: auto;
-    top: 80%; left: 0; bottom: 0; right: 100px; 
+    top: 80%; left: 0; bottom: 0; right: 0; 
     border: 2px solid #446694;
     text-align:center;
 }
 .button_goback:hover{
     background-color:#446694;
 }
-
-.help_button{
-    position: absolute;
-    background-color: #bacfec;
-    width: 60px;
-    height: 15px;
-    font-size: 15px;
-    padding: 5px;
-    margin: auto;
-    top: 80%; left: 100px; bottom: 0; right: 0; 
-    border: 2px solid #446694;
-    text-align:center;
-}
-.help_button:hover{
-    background-color:#446694;
-}
-
-
