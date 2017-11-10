@@ -19,7 +19,7 @@ namespace LoginServer
             int m_count = 0;
             List<String> m_userIDList = new List<String>();
 
-            OdbcConnection con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb)};DBQ=..\\..\\..\\..\\KinesisArcade.mdb");
+            OdbcConnection con = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb)};DBQ=KinesisArcade.mdb");
             con.Open();
 
             OdbcCommand m_createLoginInstance = con.CreateCommand();
@@ -97,16 +97,18 @@ namespace LoginServer
 
             if (readerP.GetBoolean(2))
             {
-                ProcessStartInfo wInfo = new ProcessStartInfo("..\\..\\index.html");
+                con.Close();
+                ProcessStartInfo wInfo = new ProcessStartInfo("WebUI\\Web\\main.html");
                 Process.Start(wInfo);
             }
             else
             {
-                FileStream fs = new FileStream("..\\..\\..\\..\\currentuser.txt", FileMode.Truncate);
+                con.Close();
+                FileStream fs = new FileStream("currentuser.txt", FileMode.Truncate);
                 Byte[] info = new UTF8Encoding(true).GetBytes(m_userid);
                 fs.Write(info, 0, info.Length);
 
-                ProcessStartInfo gInfo = new ProcessStartInfo("..\\..\\iamtext.txt");
+                ProcessStartInfo gInfo = new ProcessStartInfo("BeatTheScarVR\\KinesisArcade.exe");
                 Process.Start(gInfo);
             }
 

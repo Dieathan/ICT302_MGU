@@ -17,7 +17,8 @@ public static class GameDataHelper
     static GameDataHelper()
     {
         m_kinectRecord = false;
-        m_kvr = new KinectVideoRecording();
+        m_url = "";
+        //m_kvr = new KinectVideoRecording();
     }
     /**
      * 
@@ -30,7 +31,7 @@ public static class GameDataHelper
 
     private static GameInstance m_currentGame;
 
-    private static KinectVideoRecording m_kvr;
+    //private static KinectVideoRecording m_kvr;
 
     /**
      * @param int score 
@@ -64,7 +65,7 @@ public static class GameDataHelper
     {
         if(m_kinectRecord == false)
         {
-            m_kvr.record();
+            //m_kvr.record();
         }
 
         m_kinectRecord = true;
@@ -72,7 +73,7 @@ public static class GameDataHelper
 
     private static void stopRecord()
     {
-        m_url = m_kvr.close(m_pid);
+        //m_url = m_kvr.close(m_pid);
         m_kinectRecord = false;
     }
 
@@ -95,6 +96,8 @@ public static class GameDataHelper
     {
         m_pid = pid;
     }
+
+    public static string getPatient() { return m_pid; }
 
     public struct Game
     {

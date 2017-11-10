@@ -9,6 +9,8 @@ public class SihouetteGameManagement : MonoBehaviour {
     public GameScoreScript gameScore;
     public GameTimeScript gameTime;
     public PauseMenu pauseMenu;
+    public EndMenu endMenu;
+    
 
     public bool isRandomWall;
     public Transform[] walls;
@@ -30,12 +32,12 @@ public class SihouetteGameManagement : MonoBehaviour {
                 setHard();
                 break;
             default:
-                setMedium();
+                setHard();
                 break;
         }
 
         gameTime.SetTime(GameDataHelper.getCurrentGame().m_duration);
-        //gameTime.SetTime(10.0f);
+        //gameTime.SetTime(5.0f);
     }
 
     void OnDelete()
@@ -55,6 +57,7 @@ public class SihouetteGameManagement : MonoBehaviour {
             wall.GetComponent<WallManagement>().RequestHideWall();
         }
         RequestNewWall();
+        RequestPauseGame(true);
     }
 
     // Update is called once per frame
@@ -98,10 +101,12 @@ public class SihouetteGameManagement : MonoBehaviour {
 
     public void GameFinish()
     {
-        
+
         // parsing data to db
         //GameDataHelper.AddMetricsToDatabase(gameScore.GetScore(),
         //    (int)(gameTime.GetTime()));
+        endMenu.RequestOpenMenu();
+        PauseGame(true);
     }
 
     public void SetIsOpenMenu(bool val)
@@ -155,6 +160,11 @@ public class SihouetteGameManagement : MonoBehaviour {
             walls[currentWallIndex].GetComponent<WallManagement>().SetWallSpeed(oldWallSpeed);
             gameTime.StartCountDown();
         }
+    }
+
+    public void RequestPauseGame(bool pause)
+    {
+        PauseGame(pause);
     }
 
     private void setEasy()

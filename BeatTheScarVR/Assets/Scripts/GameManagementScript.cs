@@ -33,7 +33,6 @@ public class GameManagementScript : MonoBehaviour{
         if (!m_progComplete)
         {
             GameDataHelper.setCurrentGame(m_dbInterface.getCurrentGame());
-            Debug.Log("godjsog");
         }
 
         m_gameList = m_dbInterface.getGameList();

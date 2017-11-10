@@ -10,3 +10,11 @@ C:\Users\Geoff\Documents\GitHub\ICT302_MGU\LoginServer\LoginServer\obj\Debug\Log
 C:\Users\Geoff\Documents\GitHub\ICT302_MGU\LoginServer\LoginServer\bin\Debug\LoginServer.exe
 C:\Users\Geoff\Documents\GitHub\ICT302_MGU\LoginServer\LoginServer\bin\Debug\LoginServer.pdb
 C:\Users\Geoff\Documents\GitHub\ICT302_MGU\LoginServer\LoginServer\obj\Debug\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\bin\Debug\LoginServer.exe.config
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\bin\Debug\LoginServer.exe
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\bin\Debug\LoginServer.pdb
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\bin\Debug\System.Data.SQLite.dll
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\bin\Debug\System.Data.SQLite.pdb
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\obj\Debug\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\obj\Debug\LoginServer.exe
+C:\Users\Geoff\Documents\ICT302\171108-1306\ICT302_MGU\LoginServer\LoginServer\obj\Debug\LoginServer.pdb
