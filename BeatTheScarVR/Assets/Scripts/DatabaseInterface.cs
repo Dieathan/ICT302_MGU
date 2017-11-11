@@ -13,7 +13,7 @@ using System.Threading;
     * @class DatabaseInterface
     * @brief Contains all the functionality between the database and the game data.
     *
-    * @author Geoff Hanson
+    * @author Geoff Hanson / MGU
     * @version 1
     * @date 10/11/17
     *

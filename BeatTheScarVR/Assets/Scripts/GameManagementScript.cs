@@ -4,6 +4,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+    /**
+    * @class GameManagementScript
+    * @brief Contains all the functionality that is used within the scripts for Unity.
+    *
+    * @author Geoff Hanson / MGU
+    * @version 1
+    * @date 10/11/17
+    *
+    */
 public class GameManagementScript : MonoBehaviour{
     public static GameManagementScript instance = null;
     public ArcadeGameMenu agm;
@@ -11,6 +21,14 @@ public class GameManagementScript : MonoBehaviour{
     public GameMenu gameMenu;
     public OVRRecenterManagerScript ovrRecenterManager;
 
+    /**
+    * @brief Overloaded Awake Function
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     void Awake()
     {
         if (instance == null)
@@ -22,6 +40,17 @@ public class GameManagementScript : MonoBehaviour{
         m_security = new Security(m_dbInterface);
     }
 
+    /**
+    * @brief Overloaded Start Function
+     * Initialises the Game Management variables. Sets the selectedArcade to null, enterGame to false,
+     * isOpenMenu to false. If the current program is complete, will set the current game from the game
+     * list.
+    *
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     void Start () {
         selectedArcade = "";
         enterGame = false;
@@ -38,43 +67,113 @@ public class GameManagementScript : MonoBehaviour{
         m_gameList = m_dbInterface.getGameList();
     }
 
-	// Update is called once per frame
+    /**
+    * @brief Overloaded Update Function
+     * Update is called once per frame and runs check functions for the game including checking
+     * the CheckEnterGameScene, CheckOptionMenu and CheckOpenArcadeGameMenu.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
 	void Update () {
         CheckEnterGameScene();
         CheckOpenMenu();
         CheckOpenArcadeGameMenu();
     }
 
+    /**
+    * @brief Sets Selected Arcade
+     * Assigns the selectedArcade to the string parameter arcadeName.
+     * 
+    * @param string arcadeName
+    * @return void
+    * @pre
+    * @post
+    */
     public void SelectArcade(string arcadeName)
     {
         selectedArcade = arcadeName;
     }
 
+    /**
+    * @brief Sets the Game ID
+     * Assigns the selectedGameID to the parameter int gameID.
+    * @param int gameID
+    * @return void
+    * @pre
+    * @post
+    */
     public void SetGameID(int gameID)
     {
         selectedGameID = gameID;
     }
 
+    /**
+    * @brief Recenters the OVR Camera
+     * Calls to RequestRecenter.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void OVRCamRecenter()
     {
         ovrRecenterManager.RequestRecenter();
     }
 
+    /**
+    * @brief Quits the Game
+    *
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void QuitGame()
     {
         Application.Quit();
     }
 
+    /**
+    * @brief Sets the bool if Menu is Open
+     * Assigns isOpenMenu to the parameter bool val.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void SetIsOpenMenu(bool val)
     {
         isOpenMenu = val;
     }
 
+    /**
+    * @brief Returns bool of menu status
+     * 
+    * @param
+    * @return bool
+    * @pre
+    * @post
+    */
     public bool GetIsOpenMenu()
     {
         return isOpenMenu;
     }
 
+    /**
+    * @brief Checks status of Arcade Game Menu
+     * Requests to open the menu if the selectedArade != "".
+     * @todo I assume this needs to be depending on what game you are looking at not just the
+     * shooter arcade.
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     private void CheckOpenArcadeGameMenu()
     {
        // if (m_security.canFreePlay())
@@ -87,6 +186,15 @@ public class GameManagementScript : MonoBehaviour{
        // }
     }
 
+    /**
+    * @brief Checks whether to Enter Game or not
+     * If enterGame is true, a game instance is added to the GameDataHelper with the game
+     * difficulty and duration. The SceneManager then loads the game scene.
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     private void CheckEnterGameScene()
     {
         if(enterGame)
@@ -96,16 +204,40 @@ public class GameManagementScript : MonoBehaviour{
         }          
     }
 
+    /**
+    * @brief Sets Enter Game Status
+     * Assigns the value of true to the enterGame variable.
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void SetEnterGame()
     {
         enterGame = true;
     }
 
+    /**
+    * @brief Reques
+    *
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     public void OpenProgramMenu()
     {
         pm.RequestOpenMenu();
     }
 
+    /**
+    * @brief
+    *
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     private void CheckOpenMenu()
     {
         
@@ -124,16 +256,40 @@ public class GameManagementScript : MonoBehaviour{
         }
     }
 
+    /**
+    * @brief
+    *
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     public void SetDifficulty(int diff)
     {
         difficulty = diff;
     }
 
+    /**
+    * @brief
+    *
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     public void SetDuration(int dura)
     {
         duration = dura;
     }
 
+    /**
+    * @brief
+    *
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     public string gameInstanceDetails()
     {
         string gameTitle = "";
@@ -168,6 +324,14 @@ public class GameManagementScript : MonoBehaviour{
                "Duration: " + GameDataHelper.getCurrentGame().m_duration + " seconds";
     }
 
+    /**
+    * @brief
+    *
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     public int getGameID(int x, int y, int z)
     {
         for (int i = 0; i < m_gameList.Count; i++)
@@ -181,16 +345,11 @@ public class GameManagementScript : MonoBehaviour{
         return 0;
     }
 
-    private string selectedArcade;
-
+    private string selectedArcade; // String of selected arcade
     private bool isOpenMenu;
-
     private bool enterGame;
-
     private int difficulty;
-
     private int duration;
-
     private int selectedGameID;
 
     private DatabaseInterface m_dbInterface;
