@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
     /**
     * @class GameManagementScript
     * @brief Contains all the functionality that is used within the scripts for Unity.
+     * Inherits from the Unity's MonoBehaviour class.
     *
     * @author Geoff Hanson / MGU
     * @version 1
@@ -15,11 +16,11 @@ using UnityEngine.SceneManagement;
     *
     */
 public class GameManagementScript : MonoBehaviour{
-    public static GameManagementScript instance = null;
-    public ArcadeGameMenu agm;
-    public ProgramMenu pm;
-    public GameMenu gameMenu;
-    public OVRRecenterManagerScript ovrRecenterManager;
+    public static GameManagementScript instance = null; // Game Management Script object set to null
+    public ArcadeGameMenu agm; // Arcade Game Menu object
+    public ProgramMenu pm; // Program Menu object
+    public GameMenu gameMenu; // Game Menu object
+    public OVRRecenterManagerScript ovrRecenterManager; // OVR Recenter Management Script object
 
     /**
     * @brief Overloaded Awake Function
@@ -42,7 +43,7 @@ public class GameManagementScript : MonoBehaviour{
 
     /**
     * @brief Overloaded Start Function
-     * Initialises the Game Management variables. Sets the selectedArcade to null, enterGame to false,
+     * Initialises the Game Management class. Sets the selectedArcade to null, enterGame to false,
      * isOpenMenu to false. If the current program is complete, will set the current game from the game
      * list.
     *
@@ -69,7 +70,7 @@ public class GameManagementScript : MonoBehaviour{
 
     /**
     * @brief Overloaded Update Function
-     * Update is called once per frame and runs check functions for the game including checking
+     * Update is called once per frame and runs checks functions for the game including checking
      * the CheckEnterGameScene, CheckOptionMenu and CheckOpenArcadeGameMenu.
      * 
     * @param
@@ -218,10 +219,10 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     /**
-    * @brief Reques
+    * @brief Requests to Open Menu
     *
     * @param
-    * @return
+    * @return void
     * @pre
     * @post
     */
@@ -231,10 +232,12 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     /**
-    * @brief
-    *
+    * @brief Checks if the Menu is Open
+     * Checks if the user controller input 'Start Button' has been pressed and opens the menu
+     * if not open already. Sets the isOpenMenu variable to true if open and false when closed.
+     * 
     * @param
-    * @return
+    * @return void
     * @pre
     * @post
     */
@@ -257,10 +260,11 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     /**
-    * @brief
-    *
-    * @param
-    * @return
+    * @brief Sets the Difficulty of the Game
+     * Assigns the parameter given diff to difficulty variable.
+     * 
+    * @param int diff
+    * @return void
     * @pre
     * @post
     */
@@ -270,10 +274,11 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     /**
-    * @brief
-    *
-    * @param
-    * @return
+    * @brief Sets the Duration of the Game
+     * Assigns the parameter given dura to duration variable.
+     * 
+    * @param int dura
+    * @return void
     * @pre
     * @post
     */
@@ -283,10 +288,14 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     /**
-    * @brief
-    *
+    * @brief Sets the Game Instance Details
+     * Assigns gameTitle and difficulty to empty strings. Checks the current game id and assigns the 
+     * corresponding title to it to the m_gameID value. Gets the current game difficulty int and assigns
+     * it a string "easy, medium or hard" (1, 2, 3) through a switch statement. Returns a string containing
+     * all details about the game instance.
+     * 
     * @param
-    * @return
+    * @return string
     * @pre
     * @post
     */
@@ -325,10 +334,14 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     /**
-    * @brief
-    *
-    * @param
-    * @return
+    * @brief Returns Game ID
+     * Loops through the game list and checks if the int X, Y, Z coordinates provided through the parameters
+     * match any of the games. If so return the game ID of that game, else continue loop until no more games.
+     * 
+    * @param int x
+     * @param int y
+     * @param int z
+    * @return int
     * @pre
     * @post
     */
@@ -346,14 +359,14 @@ public class GameManagementScript : MonoBehaviour{
     }
 
     private string selectedArcade; // String of selected arcade
-    private bool isOpenMenu;
-    private bool enterGame;
-    private int difficulty;
-    private int duration;
-    private int selectedGameID;
+    private bool isOpenMenu; // Bool for menu status, open/closed
+    private bool enterGame; // Bool for enter game status, yes/no
+    private int difficulty; // Used for level of difficulty, easy(1)/medium(2)/hard(3)
+    private int duration; // Used to store duration of game
+    private int selectedGameID; // Used to store selected game Id
 
-    private DatabaseInterface m_dbInterface;
-    private Security m_security;
-    private List<GameDataHelper.Game> m_gameList;
-    private bool m_progComplete;
+    private DatabaseInterface m_dbInterface; // Database Interface object
+    private Security m_security; // Securtiy object
+    private List<GameDataHelper.Game> m_gameList; // List of games
+    private bool m_progComplete; // Bool for program status, complete/incomplete
 }
