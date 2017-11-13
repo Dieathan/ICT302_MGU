@@ -69,17 +69,47 @@
 }
 
 .button_goback{
-    position: absolute;
+    position: relative;
     background-color: #bacfec;
     width: 80px;
     height: 30px;
     font-size: 15px;
     padding: 5px;
     margin: auto;
-    top: 80%; left: 0; bottom: 0; right: 0; 
+    top: 0; left: 0; bottom: 0; right:0; 
     border: 2px solid #446694;
-    text-align:center;
+    
 }
 .button_goback:hover{
     background-color:#446694;
+}
+
+.bgimg1 {
+    background-image: url('../res/images/main_help.jpg');
+    width:1024px;
+    height:2000px;
+}
+
+.bgimg2 {
+    background-image: url('../res/images/curren_patient_help.jpg');
+    width:1024px;
+    height:743px;
+}
+
+.bgimg3 {
+    background-image: url('../res/images/feedback_help.jpg');
+    width:1024px;
+    height:1345px;
+}
+
+.bgimg4 {
+    background-image: url('../res/images/curren_program_help.jpg');
+    width:1024px;
+    height:1466px;
+}
+
+.bgimg5 {
+    background-image: url('../res/images/task_help.jpg');
+    width:1024px;
+    height:771px;
 }

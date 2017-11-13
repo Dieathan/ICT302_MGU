@@ -69,14 +69,14 @@
 }
 
 .button_goback{
-    position: absolute;
+    position: relative;
     background-color: #bacfec;
     width: 60px;
     height: 15px;
     font-size: 15px;
     padding: 5px;
     margin: auto;
-    top: 80%; left: 0; bottom: 0; right: 100px; 
+    top: 0; left: 0; bottom: 0; right: 0; 
     border: 2px solid #446694;
     text-align:center;
 }
@@ -85,14 +85,14 @@
 }
 
 .help_button{
-    position: absolute;
+    position: relative;
     background-color: #bacfec;
     width: 60px;
     height: 15px;
     font-size: 15px;
     padding: 5px;
     margin: auto;
-    top: 80%; left: 100px; bottom: 0; right: 0; 
+    top: 0; left: 0; bottom: 0; right: 0; 
     border: 2px solid #446694;
     text-align:center;
 }

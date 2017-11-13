@@ -1,10 +1,21 @@
 ﻿div.scroll {
-    position: absolute;
+    position: relative;
+    text-align: center;
+    background-color: #07335a;
+    width:720px;
+    margin: auto;
+    height: 450px;
+    overflow: scroll;
+    top: 180px; left: 0; bottom: 0; right: 0; 
+}
+
+div.scroll_2 {
+    position: relative;
     text-align: center;
     background-color: #07335a;
     width:720px;
     margin: auto;
     height: 400px;
     overflow: scroll;
-    top: 180px; left: 0; bottom: 0; right: 0; 
+    top: 270px; left: 0; bottom: 0; right: 0; 
 }
