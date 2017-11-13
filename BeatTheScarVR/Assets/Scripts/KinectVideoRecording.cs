@@ -15,24 +15,39 @@ using Windows.Kinect;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-/**
- * 
- */
+    /**
+    * @class KinectVideRecording
+    * @brief Contains all the functionality surrounding the Kinect Sensor and converting images
+     * to video format using ffmpeg video software.
+    *
+    * @author Geoff Hanson / MGU
+    * @version 1
+    * @date 10/11/17
+    *
+    */
 public class KinectVideoRecording
 {
+    private KinectSensor ks; // Kinect Sensor object
+    private ColorFrameReader cfr; // Color Frame Reader object
+    private byte[] colorData; // Byte array containing color data
+    private ColorImageFormat format; // Color Image Format object
+    private Bitmap bmpSource; // Bitmap object
+    private int imageSerial; 
+    private List<Bitmap> bitmaps; // List containing Bitmaps
+    private int count; // Counter
+    private AVIWriter writer; // AVI Write object
+    ImageCodecInfo myImageCodecInfo; // Image Codec Info object
+    EncoderParameters myEncoderParameters; // Encoder Parameters object
 
-    private KinectSensor ks;
-    private ColorFrameReader cfr;
-    private byte[] colorData;
-    private ColorImageFormat format;
-    private Bitmap bmpSource;
-    private int imageSerial;
-    private List<Bitmap> bitmaps;
-    private int count;
-    private AVIWriter writer;
-    ImageCodecInfo myImageCodecInfo;
-    EncoderParameters myEncoderParameters;
-
+    /**
+    * @brief Default Constructor
+     * Initialises the Kinect, Encoder and Recording functions.
+     * 
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
     public KinectVideoRecording()
     {
         initKinect();
@@ -40,6 +55,16 @@ public class KinectVideoRecording
         record();
     }
 
+    /**
+    * @brief Initialises the Kinect
+     * Initialises all the required Kinect Sensor variables to utilise the functionality
+     * of the device.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     private void initKinect()
     {
         ks = KinectSensor.GetDefault();
@@ -52,6 +77,15 @@ public class KinectVideoRecording
         count = 0;
     }
 
+    /**
+    * @brief Initialises the Encoder
+     * Initialises all the required Encoder variables for image compression.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     private void initEncoder()
     {
         myImageCodecInfo = GetEncoderInfo("image/jpeg");
@@ -61,12 +95,32 @@ public class KinectVideoRecording
         myEncoderParameters.Param[0] = myEncoderParameterQ;
     }
 
+    /**
+    * @brief Records Frame
+     * Called to record the frame to which the Kienct Sensor is viewing.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void record()
     {
         cfr = ks.ColorFrameSource.OpenReader();
         cfr.FrameArrived += cfr_FrameArrived;
     }
 
+    /**
+    * @brief Converts Bitmap into .jpeg Image
+     * Recieves the frame captured by the Kinect Sensor as BITMAP and saves as a .jpeg every 3 frames
+     * to reduce game lag.
+    * 
+    * @param object sender
+     * @param ColorFramArrivedEventArgs e
+    * @return void
+    * @pre
+    * @post
+    */
     private void cfr_FrameArrived(object sender, ColorFrameArrivedEventArgs e)
     {
         if (e.FrameReference == null) return;
@@ -93,6 +147,17 @@ public class KinectVideoRecording
         count++;
     }
 
+    /**
+    * @brief Returns Image Codec Information
+     * Finds the specific type of codec defined by the parameter given String mimeType
+     * and returns it, else if nothing found returns null.
+     * 
+    * @param String mimeType
+    * @return ImageCodecInfo
+     * @return null
+    * @pre
+    * @post
+    */
     private ImageCodecInfo GetEncoderInfo(String mimeType)
     {
         int j;
@@ -106,6 +171,16 @@ public class KinectVideoRecording
         return null;
     }
 
+    /**
+    * @brief Combines .jpeg files into .mp4 format
+     * Takes a process id parameter as string pid including it in the .mp4 file location. Uses ffmpeg to compress and
+     * convert .jpeg files into .mp4 video format and returns the URL (relative path) of the video.
+    * 
+    * @param string pid
+    * @return string
+    * @pre
+    * @post
+    */
     public string close(string pid)
     {
         string url;
