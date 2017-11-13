@@ -2,22 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMenu : MonoBehaviour {
-    public Transform player;
-    public Transform cameraCentre;
+    /**
+    * @class GameMenu
+    * @brief Contains all the functionality of the Game Menu. Inherits from
+    * Unity's MonoBehaviour class.
+    *
+    * @author Benjamin Mak / MGU
+    * @version 1
+    * @date 10/11/17
+    *
+    */
+public class GameMenu : MonoBehaviour 
+{
+    public Transform player; // Holds player coordinates
+    public Transform cameraCentre; // Holds camera coordinates
 
-    public float distance = 15.0f;
+    public float distance = 15.0f; // Used to store the distance the menu is from the camera
 
-    // Use this for initialization
+    /**
+    * @brief Overloaded Start Function
+     * Initialises the game object attribute set active to false.
+     * 
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
 	void Start () {
         transform.gameObject.SetActive(false);
 	}
-	
-	// Update is called once per frame
+
+    /**
+    * @brief Overloaded Update Function
+     * Called once per frame. Currently no implementation.
+     * 
+    * @param
+    * @return
+    * @pre
+    * @post
+    */
 	void Update () {
         
 	}
 
+    /**
+    * @brief Call to Open the Menu
+     * Readjusts menu disply according to the players orientations then if game object 
+     * is not active, set active to true.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void RequestOpenMenu()
     {
         if (!transform.gameObject.activeInHierarchy)
@@ -27,6 +64,16 @@ public class GameMenu : MonoBehaviour {
         }
     }
 
+    /**
+    * @brief Call to Close Menu
+     * If game object is active, reset local position of game object and set
+     * active to false.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     public void RequestCloseMenu()
     {
         if (transform.gameObject.activeInHierarchy)
@@ -37,6 +84,16 @@ public class GameMenu : MonoBehaviour {
         }
     }
 
+    /**
+    * @brief Adjusts the Menu Display
+     * Changes the menu to be displayed in front of the players position according to which
+     * direction they are looking.
+     * 
+    * @param
+    * @return void
+    * @pre
+    * @post
+    */
     private void MenuDisplayAdjustment()
     {
         transform.localPosition = player.localPosition + cameraCentre.forward * distance;
